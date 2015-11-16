@@ -1,0 +1,81 @@
+/*OVERALL*/
+
+html {
+    
+}
+
+body {
+    
+}
+
+
+
+/*TEXT*/
+
+
+
+
+/*CALCULATOR*/
+/*BODY*/
+
+#calculator {
+    display: inline;
+    width: 280px;
+    position: absolute;
+    background-color: #000000;
+    padding: 30px;
+    box-shadow: 10px 20px 30px;
+    border-radius: 30px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.calccontain {
+    margin: 0px auto;
+}
+
+/*DISPLAY*/
+
+#output {
+    display: inline;
+}
+
+#LED {
+    width: 235px;
+    text-align: right;
+    background-color: #ffe4c5;
+    padding-right: 10px;
+    border-radius: 30px;
+    margin: 0 auto 20px auto;
+}
+
+
+/*BUTTONS*/
+
+#AC {
+    padding: 1px 18px;
+}
+
+#CE {
+    padding: 1px 18px
+}
+
+.calcbtn {
+    text-align: center;
+    margin: 0 auto;
+}
+
+.btn {
+    margin: 5px 1px;
+    border-radius: 20px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+}
+
+.btn:hover {
+    background-color: azure;
+}
+
+
+
+
