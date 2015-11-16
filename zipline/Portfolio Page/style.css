@@ -3,17 +3,13 @@ html {
     
 }
 
-body {
-    background-image: url(rr%20101.jpg);
-}
-
 .container {
     width: 100%;
     padding: 0;
 }
 
 
-
+/*https://i.imgur.com/v4VWa3r.jpg   */
 
 /*NAVIGATION*/
 
@@ -22,3 +18,9 @@ body {
 }
 
 #BFBFBF
+
+/*HOME*/
+.parallax-window {
+    min-height: 400px;
+    background: transparent;
+}
