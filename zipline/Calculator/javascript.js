@@ -223,50 +223,64 @@ $(document).ready(function() {
             runs = 1;
             decnum = 0;
             firstnum = parseFloat($('#output').text());
-            $('#DEBUGGER').text(firstnum);
         }
         if(runs > 0) {
             decnum = 0;
             b = ''
             firstnum = parseFloat($('#output').text());
-            $('#DEBUGGER').text(firstnum);
         }
     });
     
     $('#plus').click(function() {
-        secondnum = parseFloat($('#output').text());
-        total = firstnum + secondnum;
-        total = +total.toFixed(8);
-        total = total.toString();
-        $('#output').text(total);
-        $('DEBUGGER').text(secondnum);
+        if(runs === 1) {
+            secondnum = parseFloat($('#output').text());
+            total = firstnum + secondnum;
+            total = +total.toFixed(8);
+            total = total.toString();
+            $('#output').text(total);
+        }
+        else {
+            $('#output').text('ERROR');
+        }
     })
     
     $('#minus').click(function() {
-        secondnum = parseFloat($('#output').text());
-        total = firstnum - secondnum;
-        total = +total.toFixed(8);
-        total = total.toString();
-        $('#output').text(total);
-        $('DEBUGGER').text(secondnum);
+        if(runs === 1) {    
+            secondnum = parseFloat($('#output').text());
+            total = firstnum - secondnum;
+            total = +total.toFixed(8);
+            total = total.toString();
+            $('#output').text(total);
+        }
+        else {
+            $('#output').text('ERROR');
+        }
     })
     
     $('#multiply').click(function() {
-        secondnum = parseFloat($('#output').text());
-        total = firstnum * secondnum;
-        total = +total.toFixed(8);
-        total = total.toString();
-        $('#output').text(total);
-        $('DEBUGGER').text(secondnum);
+        if(runs === 1) {
+            secondnum = parseFloat($('#output').text());
+            total = firstnum * secondnum;
+            total = +total.toFixed(8);
+            total = total.toString();
+            $('#output').text(total);
+        }
+        else {
+            $('#output').text('ERROR');
+        }
     })
     
     $('#divide').click(function() {
-        secondnum = parseFloat($('#output').text());
-        total = firstnum / secondnum;
-        total = +total.toFixed(8);
-        total = total.toString();
-        $('#output').text(total);
-        $('DEBUGGER').text(secondnum);
+        if(runs === 1) {
+            secondnum = parseFloat($('#output').text());
+            total = firstnum / secondnum;
+            total = +total.toFixed(8);
+            total = total.toString();
+            $('#output').text(total);
+            }
+        else {
+            $('#output').text('ERROR');
+        }
     })
     
 });

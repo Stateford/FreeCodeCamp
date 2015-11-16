@@ -14,42 +14,58 @@
             <div class='row'>
                 <h1>Reverse Polish Notation Calculator</h1>
             </div>
+<!--            ABOUT RPN-->
             <div class='row'>
-                <h1 id='output'>0</h1>
+                <p>This is a <strong>Reverse Polish Notation</strong> calculator. It is different than most calculators you're probably use to. This calculator uses the enter key to indicate the end of the first number and the operation keys to tell the computer what operation you want to use on both numbers.</p>
             </div>
             <div class='row'>
-                <input type='button' class='btn' id='AC' value='AC'/>
-                <input type='button' class='btn' id='CE' value="CE"/>
-                <input type='button' class='btn' id='percent' value='%'/>
-                <input type='button' class='btn' id='division' value='/'/>
+                <h1>Example</h1>
+                <p>To do the calculation 2+2 in RPN you would press 2 Enter 2 +.</p>
+                <p>To string multiple calculations togeter such as 2+2+2 you would press 2 enter 2 + enter 2</p>
+                <p>This is a style of calculator that companies such as HP tried to push however it never caught on</p>
             </div>
-            <div class='row'>
-                <input type='button' class='btn' id='seven' value='7'/>
-                <input type='button' class='btn' id='eight' value="8"/>
-                <input type='button' class='btn' id='nine' value='9'/>
-                <input type='button' class='btn' id='multiply' value='*'/>
+<!--            CALCULATOR-->
+            <div class='calccontain'>
+                <div id='calculator'>
+                    <div class='row'>
+                        <div id='LED'>
+                            <h1 id='output'>0</h1>
+                        </div>
+                    </div>
+                    <div class='calcbtn'>
+                        <div class='row'>
+                            <input type='button' class='btn btn-danger' id='AC' value='AC'/>
+                            <input type='button' class='btn btn-warning' id='CE' value="CE"/>
+                            <input type='button' class='btn' id='divide' value='/'/>
+                        </div>
+                        <div class='row'>
+                            <input type='button' class='btn' id='seven' value='7'/>
+                            <input type='button' class='btn' id='eight' value="8"/>
+                            <input type='button' class='btn' id='nine' value='9'/>
+                            <input type='button' class='btn' id='multiply' value='*'/>
+                        </div>
+                        <div class='row'>
+                            <input type='button' class='btn' id='four' value='4'/>
+                            <input type='button' class='btn' id='five' value="5"/>
+                            <input type='button' class='btn' id='six' value='6'/>
+                            <input type='button' class='btn' id='minus' value='-'/>
+                        </div>
+                        <div class='row'>
+                            <input type='button' class='btn' id='one' value='1'/>
+                            <input type='button' class='btn' id='two' value="2"/>
+                            <input type='button' class='btn' id='three' value='3'/>
+                            <input type='button' class='btn' id='plus' value='+'/>
+                        </div>
+                        <div class='row'>
+                            <input type='button' class='btn' id='zero' value='0'/>
+                            <input type='button' class='btn' id='dec' value="."/>
+                            <input type='button' class='btn btn-success' id='enter' value='ENTER'/>
+                        </div>
+                        </div>
+                </div>
             </div>
-            <div class='row'>
-                <input type='button' class='btn' id='four' value='4'/>
-                <input type='button' class='btn' id='five' value="5"/>
-                <input type='button' class='btn' id='six' value='6'/>
-                <input type='button' class='btn' id='minus' value='-'/>
+            <div class='whitespace'>
             </div>
-            <div class='row'>
-                <input type='button' class='btn' id='one' value='1'/>
-                <input type='button' class='btn' id='two' value="2"/>
-                <input type='button' class='btn' id='three' value='3'/>
-                <input type='button' class='btn' id='plus' value='+'/>
-<!--                <input type='button' id='equals' value='='/>-->
-            </div>
-            <div class='row'>
-                <input type='button' class='btn' id='zero' value='0'/>
-                <input type='button' class='btn' id='dec' value="."/>
-                <input type='button' class='btn' id='enter' value='ENT'/>
-            </div>
-            
-            
-            <h1 id='DEBUGGER'>DEBUGGER</h1>
         </div>
     </body>
 </html>
