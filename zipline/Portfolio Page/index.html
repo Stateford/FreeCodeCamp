@@ -8,36 +8,100 @@
         <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
         <script src="jquery-1.11.3.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-        <script src="/path/to/parallax.min.js"></script>
+        <script src='bootstrap.min.js'></script>
+        <script src='bootstrap-theme.min.css'></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <script src="parallax.min.js"></script>
         <script src="javascript.js"></script>
     </head>
     <body>
-        <div class='container'>
+    <div id='wrap'>
             
 <!--            NAVIGATION-->
-            <nav class='navbar navbar-default navbar-fixed-top'>
-                <div class='container-fluid'>
-                    <div class='navbar-header'>
-                    </div>
-                    <div id='navbar' class="navbar-collapse collapse">
+        <nav class='navbar navbar-default navbar-fixed-top'>
+            <div class='container-fluid'>
+                    <div class="navbar-collapse collapse navbar-left">
                         <ul class='nav navbar-nav'>
                             <li class='active'><a href='https://github.com/idietmoran'>Idiet Moran</a></li>
+                            </div>
                         </ul>
-                        <ul class='nav navbar-nav navbar-right'>
-                            <li><a href='#home'>Home</a></li>
-                            <li><a href='#'>About</a></li>
-                            <li><a href='#'>Portfolio</a></li>
-                            <li><a href='#'>Contact</a></li>
-                        </ul>  
-                    </div>
-                </div>
-            </nav>
-            
-<!--            HOME-->
-            <div class='parallax-window' id='#home'>
-                <h1>testtext</h1>
+                        <div class='navbar-collapse collapse navbar-right'>
+                            <ul class='nav navbar-nav'>
+                                <li><a href='#home'>Home</a></li>
+                                <li><a href='#about'>About</a></li>
+                                <li><a href='#portfolio'>Portfolio</a></li>
+                                <li><a href='#contact'>Contact</a></li>
+                            </ul>  
+                        </div>
             </div>
-            
+        </nav>
+
+<!--            HOME-->
+        <div class='parallax-window' id='home' data-parallax="scroll" data-image-src="http://e.fastcompany.net/multisite_files/fastcompany/imagecache/1280/poster/2015/01/3041577-poster-p-1-most-innovative-companies-2015-next-sectors-architecture.jpg">
+            <div class='container-fluid'>
+                <div class='heading'>
+                    <h1>Web Solutions by</h1>
+                    <h1>idietmoran</h1>
+                </div>
+            </div>
         </div>
+        
+<!--        ABOUT-->
+        
+    <div class='parallax-window' id='about' data-parallax="scroll" data-image-src="http://www.hdwallpaperscool.com/wp-content/uploads/2015/04/architecture-high-resolution-wallpaper-for-desktop.jpeg">
+        <div class='container-fluid'>
+            <div id='aboutme'>
+                <h1>idietmoran</h1>
+                <p>I'm a full-time architect student living in New England. Inbetween classes and work I've been studying coding and computer languages. I'm always striving to learn new things and improve on things I already know.</p>
+                <p><strong>Languages and Skills:</strong> HTML, CSS, JavaScript, JQuery, Python, Bootstrap</p>
+            </div>
+        </div>
+    </div>
+    
+<!--        PORFOLIO-->
+        
+        
+    <div class='parallax-window' id='portfolio' data-parallax="scroll" data-image-src="http://static1.squarespace.com/static/551cce45e4b0cd11d259af5f/t/551dc6cbe4b0ad6ca6e5771e/1428014797258/architecture_patterns_modern_desktop_1920x1200_hd-wallpaper-933419.jpg?format=2500w">
+        <div class='container-fluid'>
+            <div id='portfolio'>
+                <h1>Portfolio</h1>
+                <h1>Free Code Camp Projects:</h1>
+                <div class='row'>
+                    <a href="http://codepen.io/idietmoran/pen/VvqVrM"><img width="480" height="320" src="http://codepen.io/idietmoran/pen/VvqVrM/image/large.png"></a>
+                    <a href="http://codepen.io/idietmoran/pen/RWvrLv"><img width="480" height="320" src="http://codepen.io/idietmoran/pen/RWvrLv/image/large.png"></a>
+                </div>
+                <div class='row'>
+                    <a href="http://codepen.io/idietmoran/pen/xwmYXo"><img width="480" height="320" src="http://codepen.io/idietmoran/pen/xwmYXo/image/large.png"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+<!--        contact-->
+    
+    <div class='parallax-window' id='portfolio' data-parallax="scroll" data-image-src="https://junning.files.wordpress.com/2014/09/13.jpg">
+        <div class='container-fluid'>
+            <div id='contact'>
+                <div id='buttons'>
+                    <button id='email' class='btn btn-info' onclick="location.href='mailto:idietmoran@gmail.com'"><i class="fa fa-envelope">idietmoran@gmail.com</i></button>
+                    <button id='github' class='btn btn-info' onclick="location.href='https://github.com/idietmoran'"><i class="fa fa-github"></i>Github</button>
+                    <button id='fcc' class='btn btn-info' onclick="location.href='http://www.freecodecamp.com/idietmoran'">Free Code Camp</button>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+<!--    FOOTER-->
+    <div id="footer">
+        <div class="container-fluid">
+            <ul class='footerlinks'>
+                <li><a href='#home'>Home</a></li>
+                <li><a href='#about'>About</a></li>
+                <li><a href='#portfolio'>Portfolio</a></li>
+                <li><a href='#contact'>Contact</a></li>
+            </ul>  
+        </div>
+    </div>
+    </div>
     </body>
 </html>

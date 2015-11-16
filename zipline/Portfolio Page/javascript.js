@@ -1,3 +1,3 @@
-$(document).ready(function() {
-    $('#home').parallax({imageSrc: 'rr101.jpg'});
-})
+//PARRALEX
+
+jQuery(window).trigger('resize').trigger('scroll');

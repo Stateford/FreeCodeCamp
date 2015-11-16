@@ -1,26 +1,137 @@
 /*OVERALL*/
-html {
-    
-}
 
-.container {
-    width: 100%;
-    padding: 0;
+
+body { 
+    padding-top: 50px;
 }
 
 
-/*https://i.imgur.com/v4VWa3r.jpg   */
 
 /*NAVIGATION*/
 
-.container-fluid {
-    width: 100%;
-}
 
-#BFBFBF
+
+
 
 /*HOME*/
+
+
+#home {
+    margin: 0;
+}
+
+.heading {
+    margin-top: 150px;
+    text-align: center;
+}
+
+.heading h1:nth-child(1) {
+    color: #e08325;
+    text-shadow: 5px 5px 5px #000
+}
+
+.heading h1:nth-child(2) {
+    color: white;
+    font-size: 4em;
+    text-shadow: 5px 5px 5px #000;
+}
+
+
+/*ABOUT*/
+
+#about {
+    margin: 0;
+}
+
+#about h1 {
+    margin: 20px;
+    color: white;
+    text-shadow: 5px 5px 5px #000;
+    text-align: left;
+}
+
+#about p {
+    width: 300px;
+    word-wrap: break-word;
+    color: white;
+    text-shadow: 1px 1px 5px #000;
+    font-size: 20px;
+    margin-right: 20px;
+}
+
+#about strong {
+    text-decoration: underline;
+}
+
+#aboutme {
+    margin-top: 30px;
+}
+
+
+/*PORTFOLIO*/
+
+
+#portfolio h1 {
+    color: #e08325;
+    text-shadow: 5px 5px 5px #000;
+    text-align: center;
+}
+
+#portfolio .row {
+    text-align: center;
+}
+
+
+/*CONTACT*/
+
+#contact {
+    margin-top: 150px;
+}
+
+#contact button {
+    display: block;
+    width: 180px;
+    margin-top: 5px;
+    text-align: center;
+}
+
+#buttons {
+    width: 200px;
+    float: right;
+    margin-right: 200px;
+}
+
+
+/*FOOTER*/
+
+#footer {
+    padding-top: 10px;
+    background-color: #F8F8F8;
+}
+
+.footerlinks {
+    display: inline-block;
+    list-style: none;
+    min-width: 100%;
+}
+
+
+.footerlinks li {
+    display: inline;
+}
+
+.footerlinks a {
+    padding: 0 10px;
+}
+
+.footerlinks a:hover {
+    text-decoration: none;
+}
+
+/*PARALLAX*/
+
+
 .parallax-window {
-    min-height: 400px;
+    min-height: 600px;
     background: transparent;
 }
