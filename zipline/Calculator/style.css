@@ -75,3 +75,11 @@ body {
     padding-top: 1px;
     padding-bottom: 1px;
 }
+
+.btn:hover {
+    background-color: azure;
+}
+
+
+
+
