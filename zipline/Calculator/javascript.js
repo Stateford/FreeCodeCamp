@@ -224,7 +224,7 @@ $(document).ready(function() {
             decnum = 0;
             firstnum = parseFloat($('#output').text());
         }
-        if(runs > 0) {
+        else if(runs > 0) {
             decnum = 0;
             b = ''
             firstnum = parseFloat($('#output').text());
