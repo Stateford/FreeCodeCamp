@@ -2,4 +2,4 @@ function convert(num) {
     return num;
 }
 
-convert(36);
+console.log(convert(36));
