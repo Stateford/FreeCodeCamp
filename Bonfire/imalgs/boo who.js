@@ -1,6 +1,12 @@
 function boo(bool) {
-  // What is the new fad diet for ghost developers? The Boolean.
-  return bool;
+    var myArray = [true, false];
+    for(var i = 0; i < myArray.length; i++) {
+        if(bool === myArray[i]) {
+            return true;
+        }
+    }
+    return false;
 }
 
-boo(null);
+console.log(boo(true));
+console.log(boo(false));

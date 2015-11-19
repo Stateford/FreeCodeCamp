@@ -3,9 +3,9 @@ function fearNotLetter(str) {
         var unicode = str.charCodeAt(i);
         if(unicode !== str.charCodeAt(0) + i) {
             return String.fromCharCode(unicode-1);
-        }  
+        }
     }
-    return undefined;    
+    return undefined;
 }
 
 
