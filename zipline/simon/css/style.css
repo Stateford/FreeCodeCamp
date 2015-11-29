@@ -1,0 +1,39 @@
+/*OVERALL*/
+
+body {
+    margin: 0;
+}
+
+/*SIMON*/
+
+.simon {
+    background-color: black;
+    border-radius: 500px;
+    height: 500px;
+    width: 500px;
+    position: absolute;
+}
+
+/*RED*/
+
+#red {
+    background-color: red;
+    border-radius: 200px 0 0 0;
+    -moz-border-radius: 200px 0 0 0;
+    position: absolute;
+    height: 200px;
+    width: 200px;
+    left: 20px;
+    top: 20px;
+}
+
+
+#blue {
+    background-color: blue;
+    border-radius: 0px 200px 0 0;
+    position: absolute;
+    height: 200px;
+    width: 200px;
+    left: 250px;
+    top: 20px;
+}
