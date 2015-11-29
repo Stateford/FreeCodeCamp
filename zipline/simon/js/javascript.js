@@ -1,4 +1,5 @@
 var turncount = 0;
+<<<<<<< HEAD
 var playerturn = false;
 var simon = [];
 var playerinput = [];
@@ -98,3 +99,12 @@ $(document).ready(function() {
     
     
 });
+=======
+var userinput = '';
+var simonsays = '';
+
+var red = '1';
+var blue = '2';
+var yellow = '3'
+var green = '4';
+>>>>>>> origin/master
