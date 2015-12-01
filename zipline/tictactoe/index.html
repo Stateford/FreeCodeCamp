@@ -3,22 +3,86 @@
     <head>
         <meta charset="utf-8"/>
         <title>Untitled</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+        <link type='text/css' rel='stylesheet' href='css/sidenav.css'/>
         <link type='text/css' rel='stylesheet' href='css/style.css'/>
+        <script src='js/sidenav.js'></script>
         <script src='js/javascript.js'></script>
     </head>
     <body>
-        <div class='wrap'>
-            <div class='gamebody'>
-                <div class='container'>
-                    <div class='row'>
+        
+        <div class='wrap'> <!--START WRAP-->
+        
+            <nav class='sidenav'>
+                <div class='contain'>
+                    <div class='toggle-menu'>
+                        <a href='#' class='menubtn'><i class="fa fa-bars"></i></a>
                     </div>
-                    <div class='row'>
+                    <div class='sidenav-brand'>
+                        <h1 id='tic'>TIC</h1> <br />
+                        <h1 id='tac'>TAC</h1> <br />
+                        <h1 id='toe'>TOE</h1>
                     </div>
-                    <div class='row'>
+                    <div class='game-settings'>
+                        <form class='settings'>
+                            <select class='players'>
+                                <option>1 Player</option>
+                                <option>2 Player</option>
+                            </select> <br />
+                            <div class='startstop'>
+                                <button type='button' class='start'>Play</button>
+                                <button type='button' class='reset'>Reset</button>
+                            </div>
+                        </form>
                     </div>
+                </div>
+            </nav>
+            
+            <div class='mainbody'>
+                
+                <div class="gamebody">
+                    
+                    <div class='r'>  <!--ROW 1-->
+                        <div class='col' id='s1'>
+                            <p>X</p>
+                        </div>
+                        <div class='col' id='s2'>
+                            <p>X</p>
+                        </div>
+                        <div class='col' id='s3'>
+                            <p>X</p>
+                        </div>
+                    </div>
+                
+                    <div class='r'>  <!--ROW 2-->
+                        <div class='col' id='s4'>
+                            <p>X</p>
+                        </div>
+                        <div class='col' id='s5'>
+                            <p>X</p>
+                        </div>
+                        <div class='col' id='s6'>
+                            <p>X</p>
+                        </div>
+                    </div>
+                    
+                    <div class='r'>  <!--ROW 3-->
+                        <div class='col' id='s7'>
+                            <p>X</p>
+                        </div>
+                        <div class='col' id='s8'>
+                            <p>X</p>
+                        </div>
+                        <div class='col' id='s9'>
+                            <p>X</p>
+                        </div>
+                    </div>
+                
                 </div>
             </div>
             
-        </div>
+        </div> <!--END WRAP-->
+        
     </body>
 </html>

@@ -1,6 +1,65 @@
-/*OVERALL*/
-body {
-    margin: 0;
+/*NAV*/
+
+.sidenav-brand {
+    margin-left: 20px;
 }
 
+#tic {
+    margin-top: 10px;
+}
+
+#tac {
+    margin-left: 20px;
+}
+
+#toe {
+    margin-left: 40px;
+}
+
+.game-settings {
+    margin-left: 20px;
+    margin-top: 50px;
+}
+
+.players {
+    width: 150px;
+    text-align: center;
+    background-color: #cec7c7;
+}
+
+.startstop {
+    margin-top: 20px;
+    display: inline-block;
+    float: right;
+    margin-right:530px;
+}
+
+.start {
+    
+}
+
+.reset {
+    
+}
+
+.r {
+    width: 500px;
+    height: 50px;
+}
+
+.col {
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    background-color: aliceblue;
+}
+
+.col p {
+    display: inline;
+    margin: auto;
+}
 /*game*/
+
+.gamebody {
+    background-color: black;
+}

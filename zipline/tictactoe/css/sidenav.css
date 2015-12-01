@@ -1,0 +1,47 @@
+body {
+    margin: 0;
+}
+
+.sidenav h1 {
+    margin: 0;
+    display: inline-block;
+}
+
+.menubtn {
+    color: black;
+    display: inline;
+    float: right;
+    margin-right: 10px;
+    margin-top: 10px;
+    font-size: 2em;
+}
+
+.sidenav {
+    width: 250px;
+    height: 100%;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0);
+    color: white;
+    left: -200px;
+}
+
+.mainbody {
+    position: absolute;
+    left: 50px;
+    width: 100% - 250px;
+    height: 100%;
+}
+
+.active {
+    left: 0px;
+    background-color: black;
+    color: white;
+}
+
+.activemenubtn {
+    color: white;
+}
+
+.activemb {
+    left: 250px;
+}
