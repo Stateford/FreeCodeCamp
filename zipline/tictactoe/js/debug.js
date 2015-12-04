@@ -6,6 +6,8 @@ $(document).ready(function() {
     var playerOneWin = false;
     var playerTwoWin = false;
     
+    
+    var twoPlayers = true;
 
     //LOCKOUT
     var s1 = false;
@@ -51,55 +53,26 @@ $(document).ready(function() {
     var spacesleft = [0, 1, 2, 3, 4, 5, 6, 7, 8];
     
     
-    //DETERMINE NUMBER OF PLAYERS
-    var twoPlayers = true;
-    var getPlayerNum = $('.players').val()
-    
-//    var playerCheck = function(val) {
-//        if(val = '1') {
-//            twoPlayers = false;
-//        }
-//        else if(val = 2) {
-//            twoPlayers = true;
-//        }
-//    }
-        
-    //DETERMINE PLAYER TURN
-    var randomPlayerTurn = Math.round(Math.random() * (2-1) + 1);
-    
-    if(randomPlayerTurn = 1) {
-        player1 = false;
-    }
-    else {
-        player1 = true;
-    }
-    
-    
-    //IDLE
-    for(var i = 0; i < lockout.length; i++) {
-        lockout[i] = true;
-    }
-    
     //GAMESTART
-    $('#start').click(function() {
-        
-        //reset everything
-        playerCheck(getPlayerNum);
-        gameplay = true;
-        turncount = 0;
-        
-        //set lockout to false to start game
-        for (var x = 0; x < lockout.length; x++) {
-            lockout[x] = false;
-        }
-        
-        //reset wincond
-        for(var i = 0; i < wincond.length; i++) {
-            wincond[i] = '';
-        }
-        
-        var spacesleft = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-    })
+//    $('#start').click(function() {
+//        
+//        //reset everything
+//        playerCheck(getPlayerNum);
+//        gameplay = true;
+//        turncount = 0;
+//        
+//        //set lockout to false to start game
+//        for (var x = 0; x < lockout.length; x++) {
+//            lockout[x] = false;
+//        }
+//        
+//        //reset wincond
+//        for(var i = 0; i < wincond.length; i++) {
+//            wincond[i] = '';
+//        }
+//        
+//        var spacesleft = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+//    })
     
     
     //GRID POSITION
@@ -127,9 +100,12 @@ $(document).ready(function() {
                 player1 = false;
                 turncount++;
                 s1 = true;
-
+                
                 if(wincheck(wincond)) {
                     twoPlayers = false;
+                }
+                else {
+                    twoPlayers = true;
                 }
             }
 
@@ -142,9 +118,9 @@ $(document).ready(function() {
                 player1 = true;
                 turncount++;
                 s1 = true;
-
+                
                 if(wincheck(wincond)) {
-                    gameplay = false;
+                    twoPlayers = false;
                 }
             }
         })    
@@ -162,7 +138,7 @@ $(document).ready(function() {
                 s2 = true;
 
                 if(wincheck(wincond)) {
-                    gameplay false;
+                    twoPlayers = false;
                 }
             }
 
@@ -176,7 +152,7 @@ $(document).ready(function() {
                 s2 = true;
 
                 if(wincheck(wincond)) {
-                    gameplay = false;
+                    twoPlayers = false;
                 }
             }
         })    
@@ -195,9 +171,8 @@ $(document).ready(function() {
                 s3 = true;
 
                 if(wincheck(wincond)) {
-                    gameplay = false;
+                    twoPlayers = false;
                 }
-
             }
 
             //PLAYER 2
@@ -211,7 +186,7 @@ $(document).ready(function() {
                 s3 = true;
 
                 if(wincheck(wincond)) {
-                    gameplay = false;
+                    twoPlayers = false;
                 }
             }
         })
@@ -230,7 +205,7 @@ $(document).ready(function() {
                 s4 = true;
 
                 if(wincheck(wincond)) {
-                    gameplay = false;
+                    twoPlayers = false;
                 };
             }
 
@@ -244,7 +219,7 @@ $(document).ready(function() {
                 s4 = true;
 
                 if(wincheck(wincond)) {
-                    gameplay = false;
+                    twoPlayers = false;
                 }
             }
         })
@@ -264,7 +239,7 @@ $(document).ready(function() {
                 s5 = true;
 
                 if(wincheck(wincond)) {
-                    gameplay = false;
+                    twoPlayers = false;
                 }
             }
 
@@ -280,7 +255,7 @@ $(document).ready(function() {
                 s5 = true;
 
                 if(wincheck(wincond)) {
-                    gameplay = false;
+                    twoPlayers = false;
                 }
             }
         })
@@ -298,7 +273,7 @@ $(document).ready(function() {
                 s6 = true;
 
                 if(wincheck(wincond)) {
-                    gameplay = false;
+                    twoPlayers = false;
                 }
             }
 
@@ -312,7 +287,7 @@ $(document).ready(function() {
                 s6 = true;
 
                 if(wincheck(wincond)) {
-                    gameplay = false;
+                    twoPlayers = false;
                 }
             }
         })
@@ -331,7 +306,7 @@ $(document).ready(function() {
                 s7 = true;
 
                 if(wincheck(wincond)) {
-                    gameplay = false;
+                    twoPlayers = false;
                 }
             }
 
@@ -346,7 +321,7 @@ $(document).ready(function() {
                 s7 = true;
 
                 if(winchek(wincond)) {
-                    gameplay = false;
+                    twoPlayers = false;
                 }
             }
         });
@@ -364,7 +339,7 @@ $(document).ready(function() {
                 s8 = true;
 
                 if(wincheck(wincond)) {
-                    gameplay = false;
+                    twoPlayers = false;
                 }
             }
             //PLAYER 2
@@ -377,7 +352,7 @@ $(document).ready(function() {
                 s8 = true;
 
                 if(wincheck(wincond)) {
-                    gameplay = false;
+                    twoPlayers = false;
                 }
             }
         })
@@ -396,7 +371,7 @@ $(document).ready(function() {
                 s9 = true;
 
                 if(wincheck(wincond)) {
-                    gameplay = false;
+                    twoPlayers = false;
                 }
             }
 
@@ -411,10 +386,13 @@ $(document).ready(function() {
                 s9 = true;
 
                 if(wincheck(wincond)) {
-                    gameplay = false;
+                    twoPlayers = false;
                 }
             }
         })
 
     } //END TWO PLAYER
+    else {
+        $('#win').text('gamefinish')
+    }
 }); //END DOCUMENT READY

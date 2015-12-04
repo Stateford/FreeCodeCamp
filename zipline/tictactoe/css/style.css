@@ -31,7 +31,7 @@
     margin-top: 20px;
     display: inline-block;
     float: right;
-    margin-right:530px;
+    margin-right: 80px;
 }
 
 .start {
@@ -52,6 +52,7 @@
     height: 50px;
     display: inline-block;
     background-color: aliceblue;
+    position: static;
 }
 
 .col p {
@@ -62,4 +63,9 @@
 
 .gamebody {
     background-color: black;
+}
+
+#win {
+    margin: 0;
+    position: absolute;
 }
