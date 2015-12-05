@@ -75,11 +75,6 @@ $(document).ready(function() {
     }
     
     
-    //IDLE
-    for(var i = 0; i < lockout.length; i++) {
-        lockout[i] = true;
-    }
-    
     //GAMESTART
     $('#start').click(function() {
         
