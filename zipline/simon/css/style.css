@@ -2,16 +2,19 @@
 
 body {
     margin: 0;
+    background-color: #191717;
 }
 
 /*SIMON*/
 
 .simon {
     background-color: black;
-    border-radius: 500px;
-    height: 500px;
-    width: 500px;
+    border-radius: 50%;
+    height: 450px;
+    width: 450px;
     position: absolute;
+    margin-top: 30px;
+    margin-left: 80px;
 }
 
 /*RED*/
@@ -34,6 +37,27 @@ body {
     position: absolute;
     height: 200px;
     width: 200px;
-    left: 250px;
+    left: 230px;
     top: 20px;
 }
+
+#green {
+    background-color: green;
+    border-radius: 0px 0 200px 0;
+    position: absolute;
+    height: 200px;
+    width: 200px;
+    left: 230px;
+    top: 230px;
+}
+
+#yellow {
+    background-color: yellow;
+    border-radius: 0 0 0 200px;
+    position: absolute;
+    height: 200px;
+    width: 200px;
+    left: 20px;
+    top: 230px;
+}
+

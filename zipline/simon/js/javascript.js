@@ -1,110 +1,77 @@
-var turncount = 0;
-<<<<<<< HEAD
-var playerturn = false;
-var simon = [];
-var playerinput = [];
+//GAME
+var playerTurn = false;
+var colors = ["red", "yellow", "blue", "green"];
 var hardcore = false;
 
-var red = 1;
-var blue = 2;
-var yellow = 3;
-var green = 4;
-var random = Math.round(Math.random() * (4-1) + 1);
 
-$(document).ready(function() {
-    
-    while(playerturn === false) {
-            var simonturn = simon.push(random);
-            
-            for(var i = 0; i < simon.length; i++) {
-                if(simonturn === 1) {
-                    $('#red').css( {'background-color:', "red" });
-                    $('#red').css ( {'background-color:', 'red'});
-                } 
-            }
-        
-            
-        playerturn = true;
-        };
-    
-    $('#red').click(function() {
-        playerinput.push(1);
-        if(simon.join() === playerinput.join()) {
-            playerturn === false;
-            turncount++;
-        }
-        else if (hardcore) {
-            turncount = 0;
-            simon = [];
-            playerinput = [];
-        }
-        else {
-            
-        }
-    });
-    
-    $('#blue').click(function() {
-        playerinput.push(2);
-        for(var i = 0; i < simon.legnth; i++) {
-            if(simon.join() === playerinput.join()) {
-                playerturn === false;
-                turncount++
-            }
-            else if (hardcore) {
-                turncount = 0;
-                simon = [];
-                playerinput = [];
-            }
-            else {
-                
-            }
-        }
-    });
-        
-    $('#yellow').click(function() {
-        playerinput.push(3);
-        for(var i = 0; i < simon.length; i++) {
-            if(simon.join() === playerinput.join()) {
-                playerturn === false;
-                turncount++
-            }
-            else if (hardcore) {
-                turncount = 0;
-                simon = [];
-                playerinput = [];
-            }
-            else {
-                
-            }
-        }
-    });
-        
-    $('#green').click(function() {
-        playerinput.push(4);
-        for(var i = 0; i < simon.length; i++) {
-            if(simon.join() === playerinput.join()) {
-                playerturn === false;
-                turncount++
-            }
-            else if (hardcore) {
-                turncount = 0;
-                simon = [];
-                playerinput = [];
-            }
-            else {
-                
-            }
-        }
-    })
-    
-    
-});
-=======
-var userinput = '';
-var simonsays = '';
+//DETERMINE RANDOM COLOR
+function randomColor() {
+    var random = Math.round(Math.random() * 3);
+    return colors[random];
+};
 
-var red = '1';
-var blue = '2';
-var yellow = '3'
-var green = '4';
->>>>>>> origin/master
+//SIMON AI
+var simonOrder = [];
+
+function simonSays() {
+    simonOrder.push(randomColor());
+    
+    //DISPLAY SIMONORDER
+    for(var i = 0; i < simonOrder.length; i++) {
+        console.log(simonOrder[i]);
+    }
+};
+
+//PLAYER
+var playerOrder = [];
+
+function playerInput(color) {
+    playerOrder.push(color);
+}
+
+//CHECK
+function orderCheck() {
+    if(simonOrder.equals(playerOrder)) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+//IS EQUAL
+// Warn if overriding existing method
+if(Array.prototype.equals)
+    console.warn("Overriding existing Array.prototype.equals. Possible causes: New API defines the method, there's a framework conflict or you've got double inclusions in your code.");
+// attach the .equals method to Array's prototype to call it on any array
+Array.prototype.equals = function (array) {
+    // if the other array is a falsy value, return
+    if (!array)
+        return false;
+
+    // compare lengths - can save a lot of time 
+    if (this.length != array.length)
+        return false;
+
+    for (var i = 0, l=this.length; i < l; i++) {
+        // Check if we have nested arrays
+        if (this[i] instanceof Array && array[i] instanceof Array) {
+            // recurse into the nested arrays
+            if (!this[i].equals(array[i]))
+                return false;       
+        }           
+        else if (this[i] != array[i]) { 
+            // Warning - two different object instances will never be equal: {x:20} != {x:20}
+            return false;   
+        }           
+    }       
+    return true;
+}
+// Hide method from for-in loops
+Object.defineProperty(Array.prototype, "equals", {enumerable: false});
+
+//GAME
+
+
+
+console.log(orderCheck());
