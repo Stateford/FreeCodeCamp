@@ -17,7 +17,7 @@ body {
     margin-left: 80px;
 }
 
-/*RED*/
+/*NORMAL COLORS*/
 
 #red {
     background-color: red;
@@ -61,3 +61,70 @@ body {
     top: 230px;
 }
 
+
+/*HIGHLIGHT COLORS*/
+
+.redh {
+    background-color: #ed5454;
+    border-radius: 200px 0 0 0;
+    -moz-border-radius: 200px 0 0 0;
+    position: absolute;
+    height: 200px;
+    width: 200px;
+    left: 20px;
+    top: 20px;
+}
+
+
+.blueh {
+    background-color: #5050ff;
+    border-radius: 0px 200px 0 0;
+    position: absolute;
+    height: 200px;
+    width: 200px;
+    left: 230px;
+    top: 20px;
+}
+
+.greenh {
+    background-color: #72f472;
+    border-radius: 0px 0 200px 0;
+    position: absolute;
+    height: 200px;
+    width: 200px;
+    left: 230px;
+    top: 230px;
+}
+
+.yellowh {
+    background-color: #f2f297;
+    border-radius: 0 0 0 200px;
+    position: absolute;
+    height: 200px;
+    width: 200px;
+    left: 20px;
+    top: 230px;
+}
+
+/*DISPLAY*/
+
+.settings {
+    position: absolute;
+    top: 500px;
+    left: 200px
+}
+
+.display ul {
+    list-style: none;
+}
+
+.display ul li {
+    display: inline;
+}
+
+.display p {
+    display: inline;
+    color: white;
+    font-size: 20px;
+    margin-right: 20px;
+}
