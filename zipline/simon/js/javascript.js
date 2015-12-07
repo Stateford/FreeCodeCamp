@@ -10,7 +10,7 @@ $(document).ready(function() {
 
 
     //DETERMINE RANDOM COLOR
-    function randomColor() {
+    var randomColor = function() {
         var random = Math.round(Math.random() * 3);
         return colors[random];
     };
@@ -22,7 +22,7 @@ $(document).ready(function() {
     //PLAYER
     var playerOrder = [];
 
-    function playerInput(color) {
+    var playerInput = function(color) {
         playerOrder.push(color);
     }
 
@@ -60,7 +60,7 @@ $(document).ready(function() {
     Object.defineProperty(Array.prototype, "equals", {enumerable: false});
 
     //CHECK
-    function orderCheck() {
+    var orderCheck = function() {
         if(simonOrder.equals(playerOrder)) {
             return true;
         }
@@ -72,39 +72,39 @@ $(document).ready(function() {
 
     
     //SIMON AI
-    function simonDisp() {
-    for(var i = 0; i < simonOrder.length; i++) {
-        switch(simonOrder[i]) {
+    var simonDisp = function() {
+        for(var i = 0; i < simonOrder.length; i++) {
+            switch(simonOrder[i]) {
 
-            case "red":
-                $('#red').addClass('redh').delay(1000).queue(function() {
-                    $(this).removeClass('redh').dequeue();
-                })
-                break;
+                case "red":
+                    $('#red').addClass('hidden').delay(1000).queue(function() {
+                        $(this).removeClass('hidden').dequeue();
+                    })
+                    break;
 
-            case "yellow":
-                $('#yellow').addClass('yellowh').delay(1000).queue(function() {
-                    $(this). removeClass('yellowh').dequeue();
-                })
-                break;
+                case "yellow":
+                    $('#yellow').addClass('hidden').delay(1000).queue(function() {
+                        $(this). removeClass('hidden').dequeue();
+                    })
+                    break;
 
 
-            case "blue":
-                $('#blue').addClass('blueh').delay(1000).queue(function() {
-                    $(this).removeClass('blueh').dequeue();
-                });
-                break;
+                case "blue":
+                    $('#blue').addClass('hidden').delay(1000).queue(function() {
+                        $(this).removeClass('hidden').dequeue();
+                    });
+                    break;
 
-            case "green":
-                $('#green').addClass('greenh').delay(1000).queue(function() {
-                    $(this).removeClass('greenh').dequeue();
-                })
-                break;
+                case "green":
+                    $('#green').addClass('hidden').delay(1000).queue(function() {
+                        $(this).removeClass('hidden').dequeue();
+                    })
+                    break;
             }
         }
     }
 
-    function simonSays() {
+    var simonSays = function() {
         while(simonTurn) {
             simonOrder.push(randomColor());
 
@@ -120,28 +120,29 @@ $(document).ready(function() {
     
     
     //START GAME
-    function startGame() {
+    var startGame = function() {
         if (gameLive === false) {
             turnCount = 0;
             playerTurn = false;
             simonOrder = [];
             simonTurn = true;
             gameLive = true;
+            simonSays();
         }
     };
 
     //RESET GAME
-    function resetGame() {
+    var resetGame = function() {
         turnCount = 0;
         playerTurn = false;
         simonTurn = true;
         simonOrder = [];
         playerOrder = [];
         simonSays();
-    }
+    };
        
     //GAMEOVER
-    function gameOver() {
+    var gameOver = function() {
 
         //HARDCORE
         if(hardcore) {
@@ -173,59 +174,53 @@ $(document).ready(function() {
         }
         else if (hardcore === false && gameLive === false) {
             $('#hardcoredisp').text('Hardcore');
-            hardcore = false;
+            hardcore = true;
         }
     });
     
     
-    
-    if(simonTurn) {
-        simonSays();
-    }
-    else if(playerTurn) {
-        //RED CLICK
-        $('#red').click(function() {
-            if(orderCheck()) {
-                playerInput("red");
-                simonSays();
-            }
-            else {
-                gameOver();
-            }
-        });
+    //RED CLICK
+    $('#red').click(function() {
+        if(playerTurn && orderCheck()) {
+            playerInput("red");
+            simonSays();
+        }
+        else {
+            gameOver();
+        }
+    });
 
-        //YELLOW CLICK
-        $('#yellow').click(function() {
-            if(orderCheck()) {
-                playerInput('yellow');
-                simonSays();
-            }
-            else {
-                gameOver();
-            }
-        });
-        
-        //BLUE CLICK
-        $('#blue').click(function() {
-            if(orderCheck()) {
-                playerInput('blue');
-                simonSays();
-            }
-            else {
-                gameOver();
-            }
-        });
-        
-        
-        //GREEN CLICK
-        $('#green').click(function() {
-            if(orderCheck()) {
-                playerInput('green');
-                simonSays();
-            }
-            else {
-                gameOver();
-            }
-        });
-    }
+    //YELLOW CLICK
+    $('#yellow').click(function() {
+        if(orderCheck()) {
+            playerInput('yellow');
+            simonSays();
+        }
+        else {
+            gameOver();
+        }
+    });
+
+    //BLUE CLICK
+    $('#blue').click(function() {
+        if(orderCheck()) {
+            playerInput('blue');
+            simonSays();
+        }
+        else {
+            gameOver();
+        }
+    });
+
+
+    //GREEN CLICK
+    $('#green').click(function() {
+        if(orderCheck()) {
+            playerInput('green');
+            simonSays();
+        }
+        else {
+            gameOver();
+        }
+    });
 }); //DOCUMENT READY END
