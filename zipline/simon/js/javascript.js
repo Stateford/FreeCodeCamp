@@ -161,10 +161,14 @@ $(document).ready(function() {
     };
     
         //START GAME
-    $('#start').click(startGame());
+    $('#start').click(function() {
+        startGame();
+    });
     
     //RESTART
-    $('#reset').click(resetGame());
+    $('#reset').click(function() {
+        resetGame();
+    });
     
     //HARDCORE TOGGLE
     $('#hardcore').click(function() {
@@ -181,6 +185,7 @@ $(document).ready(function() {
     
     //RED CLICK
     $('#red').click(function() {
+        orderCheck();
         if(playerTurn && orderCheck()) {
             playerInput("red");
             simonSays();
@@ -192,7 +197,8 @@ $(document).ready(function() {
 
     //YELLOW CLICK
     $('#yellow').click(function() {
-        if(orderCheck()) {
+        orderCheck();
+        if(playerTurn && orderCheck()) {
             playerInput('yellow');
             simonSays();
         }
@@ -203,7 +209,8 @@ $(document).ready(function() {
 
     //BLUE CLICK
     $('#blue').click(function() {
-        if(orderCheck()) {
+        orderCheck();
+        if(playerTurn && orderCheck()) {
             playerInput('blue');
             simonSays();
         }
@@ -215,7 +222,8 @@ $(document).ready(function() {
 
     //GREEN CLICK
     $('#green').click(function() {
-        if(orderCheck()) {
+        orderCheck();
+        if(playerTurn && orderCheck()) {
             playerInput('green');
             simonSays();
         }

@@ -21,7 +21,11 @@ var wincon = function() {
     
     //HORIZONTAL
     for(var i = 0; i < horiz.length; i++) {
-        horiz[i];
+        var toString = horiz[i].toString();
+        
+        if(toString === 'xxx') {
+            playerOneWin();
+        }
     }
     
     
