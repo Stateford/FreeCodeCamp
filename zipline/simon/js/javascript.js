@@ -27,8 +27,9 @@ $(document).ready(function() {
     }
 
 
-
     //IS EQUAL
+    //THIRD-PARTY API
+    
     // Warn if overriding existing method
     if(Array.prototype.equals)
         console.warn("Overriding existing Array.prototype.equals. Possible causes: New API defines the method, there's a framework conflict or you've got double inclusions in your code.");
@@ -75,7 +76,6 @@ $(document).ready(function() {
     var simonDisp = function() {
         for(var i = 0; i < simonOrder.length; i++) {
             switch(simonOrder[i]) {
-
                 case "red":
                     $('#red').addClass('hidden').delay(1000).queue(function() {
                         $(this).removeClass('hidden').dequeue();
@@ -87,7 +87,6 @@ $(document).ready(function() {
                         $(this). removeClass('hidden').dequeue();
                     })
                     break;
-
 
                 case "blue":
                     $('#blue').addClass('hidden').delay(1000).queue(function() {
@@ -102,7 +101,7 @@ $(document).ready(function() {
                     break;
             }
         }
-    }
+    };
 
     var simonSays = function() {
         while(simonTurn) {
@@ -112,7 +111,6 @@ $(document).ready(function() {
             simonDisp();
 
             //END OF TURN
-            turnCount++;
             playerTurn = true;
             simonTurn = false;
         }
@@ -141,24 +139,7 @@ $(document).ready(function() {
         simonSays();
     };
        
-    //GAMEOVER
-    var gameOver = function() {
 
-        //HARDCORE
-        if(hardcore) {
-            gameLive = false;
-            simonTurn = false;
-            turnCount = 0;
-            playerTurn = false;
-            simonOrder = [];
-            playerOrder = [];
-        }
-
-        //CASUAL
-        else if(hardcore === false) {
-            simonDisp();
-        }
-    };
     
         //START GAME
     $('#start').click(function() {
@@ -182,12 +163,37 @@ $(document).ready(function() {
         }
     });
     
+    //GAMEOVER
+    var gameOver = function() {
+
+        //HARDCORE
+        if(hardcore) {
+            gameLive = false;
+            simonTurn = false;
+            turnCount = 0;
+            playerTurn = false;
+            simonOrder = [];
+            playerOrder = [];
+        }
+
+        //CASUAL
+        else if(hardcore === false) {
+            playerOrder.pop();
+            simonDisp();
+        }
+    };
+    
+    //TURNCOUNT
+    var turnCountDisp = function() {
+        $("#turncount").text(turnCount.toString());
+    };
     
     //RED CLICK
     $('#red').click(function() {
-        orderCheck();
-        if(playerTurn && orderCheck()) {
-            playerInput("red");
+        playerInput("red");
+        if(orderCheck()) {
+            turnCount++;
+            turnCountDisp();
             simonSays();
         }
         else {
@@ -197,9 +203,11 @@ $(document).ready(function() {
 
     //YELLOW CLICK
     $('#yellow').click(function() {
+        playerInput("yellow");
         orderCheck();
-        if(playerTurn && orderCheck()) {
-            playerInput('yellow');
+        if(orderCheck()) {
+            turnCount++;
+            turnCountDisp();
             simonSays();
         }
         else {
@@ -209,9 +217,11 @@ $(document).ready(function() {
 
     //BLUE CLICK
     $('#blue').click(function() {
+        playerInput("blue");
         orderCheck();
-        if(playerTurn && orderCheck()) {
-            playerInput('blue');
+        if(orderCheck()) {
+            turnCount++;
+            turnCountDisp();
             simonSays();
         }
         else {
@@ -222,9 +232,11 @@ $(document).ready(function() {
 
     //GREEN CLICK
     $('#green').click(function() {
+        playerInput("green");
         orderCheck();
-        if(playerTurn && orderCheck()) {
-            playerInput('green');
+        if(orderCheck()) {
+            turnCount++;
+            turnCountDisp();
             simonSays();
         }
         else {
