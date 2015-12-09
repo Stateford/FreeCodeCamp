@@ -6,8 +6,8 @@ $(document).ready(function() {
     var gameLive = false;
     var colors = ["red", "yellow", "blue", "green"];
     var turnCount = 0;
-    var inputNum = 0;
     var hardcore = true;
+    var winCount = 0;
 
 
 //SIMON GLOBAL
@@ -250,9 +250,20 @@ $(document).ready(function() {
         correct();
     };
     
-//INCORRECT NOTIFICATION
-    var incorrectInput = function() {
+//ALERT
+    var alert = function() {
+        var i = 0;
         
+        function disp() {
+            if(i < 3) {
+                $('#alert').removeClass('hidden').delay(500).queue(function() {
+                    $(this).addClass('hidden').dequeue();
+                });
+                i++;
+                setTimeout(disp, 800);
+            }
+        }
+        disp();
     };
     
     
@@ -277,10 +288,12 @@ $(document).ready(function() {
                 setTimeout(simonSays, 2000);
             }
             else {
+                alert();
                 gameOver();
             }
         }
         else if(turnCount < playerOrder.length) {
+            alert();
             gameOver();
         }
     });
@@ -301,10 +314,12 @@ $(document).ready(function() {
                 setTimeout(simonSays, 2000);
             }
             else {
+                alert();
                 gameOver();
             }
         }
         else if(turnCount < playerOrder.length){
+            alert();
             gameOver();
         }
     });
@@ -325,10 +340,12 @@ $(document).ready(function() {
                 setTimeout(simonSays, 2000);
             }
             else {
+                alert();
                 gameOver();
             }
         }
         else if(turnCount < playerOrder.length) {
+            alert();
             gameOver();
         }
     });
@@ -350,10 +367,12 @@ $(document).ready(function() {
                 setTimeout(simonSays, 2000);
             }
             else {
+                alert();
                 gameOver();
             }
         }
         else if(turnCount < playerOrder.length) {
+            alert();
             gameOver();
         }
     });

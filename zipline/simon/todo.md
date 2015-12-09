@@ -2,8 +2,7 @@ TODO LIST
 ==========
 
 * add gameover notification
-* add correct input notification
-* add incorrect input notification
+* refine function winCheck to check current inputs instead of waiting for full count
 * remove debug information
 
 USER STORIES

@@ -59,52 +59,24 @@ body {
     width: 200px;
     left: 20px;
     top: 230px;
+    z-index: 1;
 }
 
+/*ALERT*/
 
-/*HIGHLIGHT COLORS*/
-
-.redh {
-    background-color: #ed5454;
-    border-radius: 200px 0 0 0;
-    -moz-border-radius: 200px 0 0 0;
-    position: absolute;
-    height: 200px;
-    width: 200px;
-    left: 20px;
-    top: 20px;
+#alert {
+    color: red;
+    background-color: white;
+    width: 100px;
+    text-align: center;
+    font-size: 1.8em;
+    height: 35px;
+    margin-top: 200px;
+    margin-left: 175px;
+    position: relative;
+    z-index: 10;
 }
 
-
-.blueh {
-    background-color: #5050ff;
-    border-radius: 0px 200px 0 0;
-    position: absolute;
-    height: 200px;
-    width: 200px;
-    left: 230px;
-    top: 20px;
-}
-
-.greenh {
-    background-color: #72f472;
-    border-radius: 0px 0 200px 0;
-    position: absolute;
-    height: 200px;
-    width: 200px;
-    left: 230px;
-    top: 230px;
-}
-
-.yellowh {
-    background-color: #f2f297;
-    border-radius: 0 0 0 200px;
-    position: absolute;
-    height: 200px;
-    width: 200px;
-    left: 20px;
-    top: 230px;
-}
 
 /*DISPLAY*/
 
