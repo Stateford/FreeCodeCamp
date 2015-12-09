@@ -1,8 +1,8 @@
 TODO LIST
 ==========
 
-* add sound
 * add gameover notification
+* add correct input notification
 * add incorrect input notification
 * remove debug information
 

@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-    //GAME
+//GAME
     var playerTurn = false;
     var simonTurn = false;
     var gameLive = false;
@@ -10,23 +10,23 @@ $(document).ready(function() {
     var hardcore = true;
 
 
-    //SIMON GLOBAL
+//SIMON GLOBAL
     var simonOrder = [];
 
 
-    //PLAYER
+//PLAYER
     var playerOrder = [];
 
     var playerInput = function(color) {
         playerOrder.push(color);
         playerTurn = false;
         simonTurn = true;
-    }
+    };
 
 
-    //IS EQUAL
-    //THIRD-PARTY API
-    
+//IS EQUAL
+//THIRD-PARTY API
+
     // Warn if overriding existing method
     if(Array.prototype.equals)
         console.warn("Overriding existing Array.prototype.equals. Possible causes: New API defines the method, there's a framework conflict or you've got double inclusions in your code.");
@@ -57,7 +57,7 @@ $(document).ready(function() {
     // Hide method from for-in loops
     Object.defineProperty(Array.prototype, "equals", {enumerable: false});
 
-    //CHECK
+//CHECK
     var orderCheck = function() {
         if(simonOrder.equals(playerOrder)) {
             return true;
@@ -67,9 +67,15 @@ $(document).ready(function() {
         }
     }
 
-
+//AUDIO    
+    var redAudio = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound1.mp3');
+    var yellowAudio = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound2.mp3');
+    var blueAudio = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound3.mp3');
+    var greenAudio = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound4.mp3');
     
-    //SIMON AI
+    
+    
+//SIMON AI
     
     //DETERMINE RANDOM COLOR
     var randomColor = function() {
@@ -77,7 +83,7 @@ $(document).ready(function() {
         return colors[random];
     };
     
-    
+    //SIMONSAYS
     var simonSays = function() {
         while(simonTurn) {
             simonOrder.push(randomColor());
@@ -91,7 +97,7 @@ $(document).ready(function() {
         }
     };
     
-
+    //SIMONDISPLAY
     var simonDisp = function() {
         var i = 0;
         
@@ -101,24 +107,28 @@ $(document).ready(function() {
                     $('#red').addClass('hidden').delay(500).queue(function() {
                         $(this).removeClass('hidden').dequeue();
                     });
+                    redAudio.play();
                     setTimeout(disp, 700);
                 }
                 else if(simonOrder[i] === "yellow") {
                     $('#yellow').addClass('hidden').delay(500).queue(function() {
                         $(this). removeClass('hidden').dequeue();
                     });
+                    yellowAudio.play();
                     setTimeout(disp, 700);
                 }
                 else if(simonOrder[i] === "blue") {
                     $('#blue').addClass('hidden').delay(500).queue(function() {
                         $(this).removeClass('hidden').dequeue();
                     });
+                    blueAudio.play();
                     setTimeout(disp, 700);
                 }
                 else if(simonOrder[i] === "green") {
                     $('#green').addClass('hidden').delay(500).queue(function() {
                         $(this).removeClass('hidden').dequeue();
                     });
+                    greenAudio.play();
                     setTimeout(disp, 700);
                 }
                 i++;
@@ -129,7 +139,7 @@ $(document).ready(function() {
 
     
     
-    //START GAME
+//START GAME
     var startGame = function() {
         if (gameLive === false) {
             turnCount = 1;
@@ -143,7 +153,7 @@ $(document).ready(function() {
         }
     };
 
-    //RESET GAME
+//RESET GAME
     var resetGame = function() {
         turnCount = 1;
         turnCountDisp();
@@ -156,7 +166,7 @@ $(document).ready(function() {
        
 
     
-        //START GAME
+    //START GAME
     $('#start').click(function() {
         startGame();
     });
@@ -178,7 +188,7 @@ $(document).ready(function() {
         }
     });
     
-    //GAMEOVER
+//GAMEOVER
     var gameOver = function() {
 
         //HARDCORE
@@ -198,7 +208,55 @@ $(document).ready(function() {
         }
     };
     
-    //TURNCOUNT
+//GAME WIN
+    var gameWin = function() {
+        if(turnCount === 20) {
+            gameLive = false;
+            simonTurn = false;
+            turnCount = 0;
+            playerTurn = false;
+            simonOrder = [];
+            playerOrder = [];
+            
+            $('#gamewin').removeClass('hidden');
+        }
+    };
+    
+//CORRECT NOTIFICATION
+    var correctInput = function() {
+        var i = 0;
+        
+        function correct() {
+            if(i < 2) {
+                $('#red').addClass('hidden').delay(500).queue(function() {
+                    $(this).removeClass('hidden').dequeue();
+                });
+
+                $('#yellow').addClass('hidden').delay(500).queue(function() {
+                    $(this). removeClass('hidden').dequeue();
+                });
+
+                $('#blue').addClass('hidden').delay(500).queue(function() {
+                    $(this).removeClass('hidden').dequeue();
+                });
+
+                $('#green').addClass('hidden').delay(500).queue(function() {
+                    $(this).removeClass('hidden').dequeue();
+                });
+                i++;
+                setTimeout(correct, 700);
+            }
+        }
+        correct();
+    };
+    
+//INCORRECT NOTIFICATION
+    var incorrectInput = function() {
+        
+    };
+    
+    
+//TURNCOUNT
     var turnCountDisp = function() {
         $("#turncount").text(turnCount.toString());
     };
@@ -206,12 +264,17 @@ $(document).ready(function() {
     //RED CLICK
     $('#red').click(function() {
         playerInput("red");
+        redAudio.play();
+        $('#red').addClass('hidden').delay(500).queue(function() {
+            $(this).removeClass('hidden').dequeue();
+        });
         if(turnCount === playerOrder.length) {
             if(orderCheck()) {
                 playerOrder = [];
                 turnCount++;
                 turnCountDisp();
-                simonSays();
+                setTimeout(correctInput, 600);
+                setTimeout(simonSays, 2000);
             }
             else {
                 gameOver();
@@ -225,12 +288,17 @@ $(document).ready(function() {
     //YELLOW CLICK
     $('#yellow').click(function() {
         playerInput("yellow");
+        yellowAudio.play();
+        $('#yellow').addClass('hidden').delay(500).queue(function() {
+            $(this).removeClass('hidden').dequeue();
+        });
         if(turnCount === playerOrder.length) {
             if(orderCheck()) {
                 playerOrder = [];
                 turnCount++;
                 turnCountDisp();
-                simonSays();
+                setTimeout(correctInput, 600);
+                setTimeout(simonSays, 2000);
             }
             else {
                 gameOver();
@@ -244,12 +312,17 @@ $(document).ready(function() {
     //BLUE CLICK
     $('#blue').click(function() {
         playerInput("blue");
+        blueAudio.play();
+        $('#blue').addClass('hidden').delay(500).queue(function() {
+            $(this).removeClass('hidden').dequeue();
+        });
         if(turnCount === playerOrder.length) {
             if(orderCheck()) {
                 playerOrder = [];
                 turnCount++;
                 turnCountDisp();
-                simonSays();
+                setTimeout(correctInput, 600);
+                setTimeout(simonSays, 2000);
             }
             else {
                 gameOver();
@@ -264,12 +337,17 @@ $(document).ready(function() {
     //GREEN CLICK
     $('#green').click(function() {
         playerInput("green");
+        greenAudio.play();
+        $('#green').addClass('hidden').delay(500).queue(function() {
+            $(this).removeClass('hidden').dequeue();
+        });
         if(turnCount === playerOrder.length) {
             if(orderCheck()) {
                 playerOrder = [];
                 turnCount++;
                 turnCountDisp();
-                simonSays();
+                setTimeout(correctInput, 600);
+                setTimeout(simonSays, 2000);
             }
             else {
                 gameOver();
