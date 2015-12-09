@@ -6,14 +6,9 @@ $(document).ready(function() {
     var gameLive = false;
     var colors = ["red", "yellow", "blue", "green"];
     var turnCount = 0;
+    var inputNum = 0;
     var hardcore = true;
 
-
-    //DETERMINE RANDOM COLOR
-    var randomColor = function() {
-        var random = Math.round(Math.random() * 3);
-        return colors[random];
-    };
 
     //SIMON GLOBAL
     var simonOrder = [];
@@ -24,6 +19,8 @@ $(document).ready(function() {
 
     var playerInput = function(color) {
         playerOrder.push(color);
+        playerTurn = false;
+        simonTurn = true;
     }
 
 
@@ -73,36 +70,14 @@ $(document).ready(function() {
 
     
     //SIMON AI
-    var simonDisp = function() {
-        for(var i = 0; i < simonOrder.length; i++) {
-            switch(simonOrder[i]) {
-                case "red":
-                    $('#red').addClass('hidden').delay(1000).queue(function() {
-                        $(this).removeClass('hidden').dequeue();
-                    })
-                    break;
-
-                case "yellow":
-                    $('#yellow').addClass('hidden').delay(1000).queue(function() {
-                        $(this). removeClass('hidden').dequeue();
-                    })
-                    break;
-
-                case "blue":
-                    $('#blue').addClass('hidden').delay(1000).queue(function() {
-                        $(this).removeClass('hidden').dequeue();
-                    });
-                    break;
-
-                case "green":
-                    $('#green').addClass('hidden').delay(1000).queue(function() {
-                        $(this).removeClass('hidden').dequeue();
-                    })
-                    break;
-            }
-        }
+    
+    //DETERMINE RANDOM COLOR
+    var randomColor = function() {
+        var random = Math.round(Math.random() * 3);
+        return colors[random];
     };
-
+    
+    
     var simonSays = function() {
         while(simonTurn) {
             simonOrder.push(randomColor());
@@ -116,13 +91,52 @@ $(document).ready(function() {
         }
     };
     
+
+    var simonDisp = function() {
+        var i = 0;
+        
+        function disp() {
+            if(i < simonOrder.length) {
+                if(simonOrder[i] === "red") {
+                    $('#red').addClass('hidden').delay(500).queue(function() {
+                        $(this).removeClass('hidden').dequeue();
+                    });
+                    setTimeout(disp, 700);
+                }
+                else if(simonOrder[i] === "yellow") {
+                    $('#yellow').addClass('hidden').delay(500).queue(function() {
+                        $(this). removeClass('hidden').dequeue();
+                    });
+                    setTimeout(disp, 700);
+                }
+                else if(simonOrder[i] === "blue") {
+                    $('#blue').addClass('hidden').delay(500).queue(function() {
+                        $(this).removeClass('hidden').dequeue();
+                    });
+                    setTimeout(disp, 700);
+                }
+                else if(simonOrder[i] === "green") {
+                    $('#green').addClass('hidden').delay(500).queue(function() {
+                        $(this).removeClass('hidden').dequeue();
+                    });
+                    setTimeout(disp, 700);
+                }
+                i++;
+            }
+        }
+        disp();
+    };
+
+    
     
     //START GAME
     var startGame = function() {
         if (gameLive === false) {
-            turnCount = 0;
+            turnCount = 1;
+            turnCountDisp();
             playerTurn = false;
             simonOrder = [];
+            playerOrder = [];
             simonTurn = true;
             gameLive = true;
             simonSays();
@@ -131,7 +145,8 @@ $(document).ready(function() {
 
     //RESET GAME
     var resetGame = function() {
-        turnCount = 0;
+        turnCount = 1;
+        turnCountDisp();
         playerTurn = false;
         simonTurn = true;
         simonOrder = [];
@@ -178,7 +193,7 @@ $(document).ready(function() {
 
         //CASUAL
         else if(hardcore === false) {
-            playerOrder.pop();
+            playerOrder = [];
             simonDisp();
         }
     };
@@ -191,12 +206,18 @@ $(document).ready(function() {
     //RED CLICK
     $('#red').click(function() {
         playerInput("red");
-        if(orderCheck()) {
-            turnCount++;
-            turnCountDisp();
-            simonSays();
+        if(turnCount === playerOrder.length) {
+            if(orderCheck()) {
+                playerOrder = [];
+                turnCount++;
+                turnCountDisp();
+                simonSays();
+            }
+            else {
+                gameOver();
+            }
         }
-        else {
+        else if(turnCount < playerOrder.length) {
             gameOver();
         }
     });
@@ -204,13 +225,18 @@ $(document).ready(function() {
     //YELLOW CLICK
     $('#yellow').click(function() {
         playerInput("yellow");
-        orderCheck();
-        if(orderCheck()) {
-            turnCount++;
-            turnCountDisp();
-            simonSays();
+        if(turnCount === playerOrder.length) {
+            if(orderCheck()) {
+                playerOrder = [];
+                turnCount++;
+                turnCountDisp();
+                simonSays();
+            }
+            else {
+                gameOver();
+            }
         }
-        else {
+        else if(turnCount < playerOrder.length){
             gameOver();
         }
     });
@@ -218,13 +244,18 @@ $(document).ready(function() {
     //BLUE CLICK
     $('#blue').click(function() {
         playerInput("blue");
-        orderCheck();
-        if(orderCheck()) {
-            turnCount++;
-            turnCountDisp();
-            simonSays();
+        if(turnCount === playerOrder.length) {
+            if(orderCheck()) {
+                playerOrder = [];
+                turnCount++;
+                turnCountDisp();
+                simonSays();
+            }
+            else {
+                gameOver();
+            }
         }
-        else {
+        else if(turnCount < playerOrder.length) {
             gameOver();
         }
     });
@@ -233,14 +264,48 @@ $(document).ready(function() {
     //GREEN CLICK
     $('#green').click(function() {
         playerInput("green");
-        orderCheck();
-        if(orderCheck()) {
-            turnCount++;
-            turnCountDisp();
-            simonSays();
+        if(turnCount === playerOrder.length) {
+            if(orderCheck()) {
+                playerOrder = [];
+                turnCount++;
+                turnCountDisp();
+                simonSays();
+            }
+            else {
+                gameOver();
+            }
         }
-        else {
+        else if(turnCount < playerOrder.length) {
             gameOver();
         }
     });
+    
+    
+    //DEBUG PURPOSES
+    var debug = function() {
+        for(var x = 0; x < simonOrder.length; x++) {
+            var currentText = $('#simonorder').text();
+            
+            var currentArr = simonOrder[x];
+            $('#simonorder').text(currentText + " " + currentArr);
+        }
+        
+        for(var i = 0; i < playerOrder.length; i++) {
+            var currentText = $('#playerorder').text();
+            
+            var currentArr = playerOrder[i];
+            $('#playerorder').text(currentText + " " + currentArr);
+        }
+        if(orderCheck()) {
+            $('#ordercheck').text('true');
+        }
+        else if(orderCheck() === false) {
+            $('#ordercheck').text('false');
+        }
+    };
+    
+    $('#debug').click(function() {
+        debug();
+    })
+    
 }); //DOCUMENT READY END
