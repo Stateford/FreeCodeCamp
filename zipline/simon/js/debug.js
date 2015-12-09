@@ -136,14 +136,27 @@ var gameOver = function() {
     }
 };
 
+var midCheck = function(arr1, arr2) {    
+    for(var i = 0; i < playerOrder.length; i++) {
+        if(arr1[i] === arr2[i]) {
+            return true;
+        }
+        else if (arr1[i] !== arr2[i]) {
+            return false;
+        }
+    }
+};
 
 
 //DEBUGGER
-simonSays();
-playerInput('yellow');
-simonSays();
+simonOrder = ['blue', 'green', "green"];
+playerInput('blue');
+playerInput('green');
+playerInput('red');
+
 
 
 console.log(simonOrder);
 console.log(playerOrder);
 console.log(orderCheck());
+console.log(midCheck(simonOrder, playerOrder));

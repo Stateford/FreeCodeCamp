@@ -250,6 +250,18 @@ $(document).ready(function() {
         correct();
     };
     
+//MID-CHECK
+    var midCheck = function(arr1, arr2) {
+        for(var i = 0; i < playerOrder.length; i++) {
+            if(arr1[i] === arr2[i]) {
+                return true;
+            }
+            else if (arr1[i] !== arr2[i]) {
+                return false;
+            }
+        }
+    };
+    
 //ALERT
     var alert = function() {
         var i = 0;
@@ -292,6 +304,12 @@ $(document).ready(function() {
                 gameOver();
             }
         }
+        else if(turnCount > playerOrder.length) {
+            if (midCheck(simonOrder, playerOrder) === false) {
+                alert();
+                gameOver();
+            }
+        }
         else if(turnCount < playerOrder.length) {
             alert();
             gameOver();
@@ -314,6 +332,12 @@ $(document).ready(function() {
                 setTimeout(simonSays, 2000);
             }
             else {
+                alert();
+                gameOver();
+            }
+        }
+        else if(turnCount > playerOrder.length) {
+            if (midCheck(simonOrder, playerOrder) === false) {
                 alert();
                 gameOver();
             }
@@ -344,6 +368,12 @@ $(document).ready(function() {
                 gameOver();
             }
         }
+        else if(turnCount > playerOrder.length) {
+            if (midCheck(simonOrder, playerOrder) === false) {
+                alert();
+                gameOver();
+            }
+        }
         else if(turnCount < playerOrder.length) {
             alert();
             gameOver();
@@ -367,6 +397,12 @@ $(document).ready(function() {
                 setTimeout(simonSays, 2000);
             }
             else {
+                alert();
+                gameOver();
+            }
+        }
+        else if(turnCount > playerOrder.length) {
+            if (midCheck(simonOrder, playerOrder) === false) {
                 alert();
                 gameOver();
             }
