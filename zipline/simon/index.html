@@ -4,6 +4,7 @@
         <meta charset="utf-8"/>
         <title>Simon</title>
         <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+        <link href='https://fonts.googleapis.com/css?family=Carter+One|Sue+Ellen+Francisco' rel='stylesheet' type='text/css'>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
         <link type='text/css' rel='stylesheet' href='css/style.css'/>
         <script src='js/javascript.js'></script>
@@ -11,7 +12,7 @@
     <body>
         <div class='wrap'>
             <div class='container'>
-            
+                <h1 id='title'>SIMON</h1>
                 <section class='simon'>
                     <div class='r'>
                         <div id='red'>
@@ -40,9 +41,8 @@
                     <section class='display'>
                         <div class='r'>
                             <ul>
-                                <li><p id='hardcoredisp'>Hardcore</p></li>
                                 <li><p id='turncount'>0</p></li>
-                                <li><p id='currentturn'>SIMON</p></li>
+                                <li><p id='hardcoredisp'>Hardcore</p></li>
                             </ul>
                         </div>
                     </section>
@@ -52,18 +52,7 @@
                             <button type='button' id='start'>Start</button>
                             <button type='button' id='reset'>Restart</button>
                             <button type='button' id='hardcore'>Hardcore</button>
-                            <button type='button' id='debug'>Debug</button>
                         </form>
-                    </section>
-                    <section class='debugger'>
-                        <ul>
-                            <li><p>SIMONORDER</p></li>
-                            <li><p id='simonorder'></p></li>
-                            <li><p>PLAYERORDER</p></li>
-                            <li><p id='playerorder'></p></li>
-                            <li><p id='ordercheck'></p></li>
-                            <li><p></p></li>
-                        </ul>
                     </section>
                 </div>
             </div>

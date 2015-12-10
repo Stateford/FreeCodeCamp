@@ -5,6 +5,16 @@ body {
     background-color: #191717;
 }
 
+/*TITLE*/
+
+#title {
+    font-family: 'Sue Ellen Francisco', cursive;
+    color: red;
+    margin-left: 250px;
+    font-size: 4em;
+    display:inline;
+}
+
 /*SIMON*/
 
 .simon {
@@ -75,6 +85,7 @@ body {
     margin-left: 175px;
     position: relative;
     z-index: 10;
+    font-family: 'Carter One', cursive;
 }
 
 
@@ -82,12 +93,13 @@ body {
 
 .settings {
     position: absolute;
-    top: 500px;
-    left: 200px
+    top: 300px;
+    left: 550px;
 }
 
 .display ul {
     list-style: none;
+    text-align: center;
 }
 
 .display ul li {
@@ -99,8 +111,22 @@ body {
     color: white;
     font-size: 20px;
     margin-right: 20px;
+    font-family: 'Sue Ellen Francisco', cursive;
+    font-size: 1.6em;
+    color: red;
 }
 
 .hidden {
     visibility: hidden;
+}
+
+/*BUTTONS*/
+#start, #reset, #hardcore {
+    font-family: 'Sue Ellen Francisco', cursive;
+    font-size: 1.6em;
+    background-color: #4dba4d;
+    border: 1px solid black;
+    border-radius: 20px;
+    margin: 0 10px;
+    padding: 0 20px;
 }

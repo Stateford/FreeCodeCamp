@@ -8,6 +8,7 @@ $(document).ready(function() {
     var turnCount = 0;
     var hardcore = true;
     var winCount = 0;
+    var clickCount = 0;
 
 
 //SIMON GLOBAL
@@ -18,6 +19,7 @@ $(document).ready(function() {
     var playerOrder = [];
 
     var playerInput = function(color) {
+        clickCount++;
         playerOrder.push(color);
         playerTurn = false;
         simonTurn = true;
@@ -142,6 +144,7 @@ $(document).ready(function() {
 //START GAME
     var startGame = function() {
         if (gameLive === false) {
+            clickCount = 0;
             turnCount = 1;
             turnCountDisp();
             playerTurn = false;
@@ -155,6 +158,7 @@ $(document).ready(function() {
 
 //RESET GAME
     var resetGame = function() {
+        clickCount = 0;
         turnCount = 1;
         turnCountDisp();
         playerTurn = false;
@@ -193,6 +197,7 @@ $(document).ready(function() {
 
         //HARDCORE
         if(hardcore) {
+            clickCount = 0;
             gameLive = false;
             simonTurn = false;
             turnCount = 0;
@@ -203,6 +208,7 @@ $(document).ready(function() {
 
         //CASUAL
         else if(hardcore === false) {
+            clickCount = 0;
             playerOrder = [];
             simonDisp();
         }
@@ -252,13 +258,11 @@ $(document).ready(function() {
     
 //MID-CHECK
     var midCheck = function(arr1, arr2) {
-        for(var i = 0; i < playerOrder.length; i++) {
-            if(arr1[i] === arr2[i]) {
-                return true;
-            }
-            else if (arr1[i] !== arr2[i]) {
-                return false;
-            }
+        if(arr1[clickCount - 1] === arr2[clickCount - 1]) {
+            return true;
+        }
+        else if(arr1[clickCount - 1] !== arr2[clickCount - 1]) {
+            return false;
         }
     };
     
@@ -293,6 +297,7 @@ $(document).ready(function() {
         });
         if(turnCount === playerOrder.length) {
             if(orderCheck()) {
+                clickCount = 0;
                 playerOrder = [];
                 turnCount++;
                 turnCountDisp();
@@ -301,18 +306,18 @@ $(document).ready(function() {
             }
             else {
                 alert();
-                gameOver();
+                setTimeout(gameOver, 2000);
             }
         }
         else if(turnCount > playerOrder.length) {
             if (midCheck(simonOrder, playerOrder) === false) {
                 alert();
-                gameOver();
+                setTimeout(gameOver, 2000);
             }
         }
         else if(turnCount < playerOrder.length) {
             alert();
-            gameOver();
+            setTimeout(gameOver, 2000);
         }
     });
 
@@ -325,6 +330,7 @@ $(document).ready(function() {
         });
         if(turnCount === playerOrder.length) {
             if(orderCheck()) {
+                clickCount = 0;
                 playerOrder = [];
                 turnCount++;
                 turnCountDisp();
@@ -333,18 +339,18 @@ $(document).ready(function() {
             }
             else {
                 alert();
-                gameOver();
+                setTimeout(gameOver, 2000);
             }
         }
         else if(turnCount > playerOrder.length) {
             if (midCheck(simonOrder, playerOrder) === false) {
                 alert();
-                gameOver();
+                setTimeout(gameOver, 2000);
             }
         }
         else if(turnCount < playerOrder.length){
             alert();
-            gameOver();
+            setTimeout(gameOver, 2000);
         }
     });
 
@@ -357,6 +363,7 @@ $(document).ready(function() {
         });
         if(turnCount === playerOrder.length) {
             if(orderCheck()) {
+                clickCount = 0;
                 playerOrder = [];
                 turnCount++;
                 turnCountDisp();
@@ -365,18 +372,18 @@ $(document).ready(function() {
             }
             else {
                 alert();
-                gameOver();
+                setTimeout(gameOver, 2000);
             }
         }
         else if(turnCount > playerOrder.length) {
             if (midCheck(simonOrder, playerOrder) === false) {
                 alert();
-                gameOver();
+                setTimeout(gameOver, 2000);
             }
         }
         else if(turnCount < playerOrder.length) {
             alert();
-            gameOver();
+            setTimeout(gameOver, 2000);
         }
     });
 
@@ -390,6 +397,7 @@ $(document).ready(function() {
         });
         if(turnCount === playerOrder.length) {
             if(orderCheck()) {
+                clickCount = 0;
                 playerOrder = [];
                 turnCount++;
                 turnCountDisp();
@@ -398,47 +406,20 @@ $(document).ready(function() {
             }
             else {
                 alert();
-                gameOver();
+                setTimeout(gameOver, 2000);
             }
         }
         else if(turnCount > playerOrder.length) {
             if (midCheck(simonOrder, playerOrder) === false) {
                 alert();
-                gameOver();
+                setTimeout(gameOver, 2000);
             }
         }
         else if(turnCount < playerOrder.length) {
             alert();
-            gameOver();
+            setTimeout(gameOver, 2000);
         }
     });
     
-    
-    //DEBUG PURPOSES
-    var debug = function() {
-        for(var x = 0; x < simonOrder.length; x++) {
-            var currentText = $('#simonorder').text();
-            
-            var currentArr = simonOrder[x];
-            $('#simonorder').text(currentText + " " + currentArr);
-        }
-        
-        for(var i = 0; i < playerOrder.length; i++) {
-            var currentText = $('#playerorder').text();
-            
-            var currentArr = playerOrder[i];
-            $('#playerorder').text(currentText + " " + currentArr);
-        }
-        if(orderCheck()) {
-            $('#ordercheck').text('true');
-        }
-        else if(orderCheck() === false) {
-            $('#ordercheck').text('false');
-        }
-    };
-    
-    $('#debug').click(function() {
-        debug();
-    })
     
 }); //DOCUMENT READY END
