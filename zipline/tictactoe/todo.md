@@ -13,3 +13,6 @@ TO DO
 
 ## OTHER
 * Add a twoplayer option
+
+## CURRENT
+* Fix winCheck \ playerOneWin \ playerTwoWin
