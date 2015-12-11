@@ -11,6 +11,17 @@ var winCount = 0;
 var playerOne = 'x';
 var playerTwo = 'o';
 
+//LOCKOUT
+var s1 = false;
+var s2 = false;
+var s3 = false;
+var s4 = false;
+var s5 = false;
+var s6 = false;
+var s7 = false;
+var s8 = false;
+var s9 = false;
+
 //WIN COND
 var horiz = [
     [],
@@ -31,50 +42,60 @@ var diag = [
 
 //PLAYER INPUT
 var input = function(arg, input) {
-    spacesLeft.slice(spacesLeft.indexOf(arg), '');
+    spacesLeft.splice(spacesLeft.indexOf(arg), 1);
     turnCount++;
     lastTurn = arg;
-    if(arg === 's1' || arg === 's2' || arg === 's3') {
+        
+    if(arg === 's1' && s1 === false) {
         horiz[0].push(input);
-        if(arg === 's1') {
-            vert[0].push(input);
-            diag[0].push(input);
-        }
-        else if(arg === 's2') {
-            vert[1].push(input);
-        }
-        else if(arg === 's3') {
-            vert[2].push(input);
-            diag[1].push(input);
-        }
+        vert[0].push(input);
+        diag[0].push(input);
+        s1 = true;
     }
-    else if(arg === 's4' || arg === 's5' || arg === 's6') {
+    else if(arg === 's2' && s2 === false) {
+        horiz[0].push(input);
+        vert[1].push(input);
+        s2 = true;
+    }
+    else if(arg === 's3' && s3 === false) {
+        horiz[0].push(input);
+        vert[2].push(input);
+        diag[1].push(input);
+        s3 = true;
+    }
+    else if(arg === 's4' && s4 === false) {
+        horiz[1].push(input); 
+        vert[0].push(input);
+        s4 = true
+    }
+    else if(arg === 's5' && s5 === false) {
         horiz[1].push(input);
-        if(arg === 's4') {
-            vert[0].push(input);
-        }
-        else if(arg === 's5') {
-            vert[1].push(input);
-            diag[0].push(input);
-            diag[1].push(input);
-        }
-        else if(arg === 's6') {
-            vert[2].push(input);
-        }
+        vert[1].push(input);
+        diag[0].push(input);
+        diag[1].push(input);
+        s5 = true;
     }
-    else if(arg === 's7' || arg === 's8' || arg === 's9') {
+    else if(arg === 's6' && s6 === false) {
+        horiz[1].push(input);
+        vert[2].push(input);
+        s6 = true;
+    }
+    else if(arg === 's7' && s7 === false) {
         horiz[2].push(input);
-        if(arg === 's7') {
-            vert[0].push(input);
-            diag[1].push(input);
-        }
-        else if(arg === 's8') {
-            vert[1].push(input);
-        }
-        else if(arg === 's9') {
-            vert[2].push(input);
-            diag[0].push(input);
-        }
+        vert[0].push(input);
+        diag[1].push(input);
+        s7 = true;
+    }
+    else if(arg === 's8' && s8 === false) {
+        horiz[2].push(input);
+        vert[1].push(input);
+        s8 = true;
+    }
+    else if(arg === 's9' && s9 === false) {
+        horiz[2].push(input);
+        vert[2].push(input);
+        diag[0].push(input);
+        s9 = true;
     }
 };
 
@@ -84,43 +105,87 @@ var computerPlayer = function() {
     computerOrder.sort();
     playerOrder.sort();
     
+    //CHECK IF PLAYER ABOUT TO WIN
+    function midCheck() {
+        if(playerTwo === 'o') {
+            for(var i = 0; i < horiz.length; i++) {
+                if(horiz[i].toString() === 'x,x') {
+                    return horiz[i];
+                }
+            }
+            for(var l = 0; l < vert.length; l++) {
+                    if(vert[l].toString() === 'x,x') {
+                        return vert[l];
+                    }
+            }
+            for(var k = 0; k < diag.length; k++) {
+                if(diag[k].toString() === 'x,x') {
+                    return diag[k];
+                }
+            }
+            return null;
+        }
+        
+        else if(playerTwo === 'x') {
+            for(var i = 0; i < horiz.length; i++) {
+                if(horiz[i].toString() === 'x,x') {
+                    return horiz[i];
+                }
+            }
+            for(var l = 0; l < vert.length; l++) {
+                if(vert[l].toString() === 'x,x') {
+                return vert[l];
+                }
+            }
+            for(var k = 0; k < diag.length; k++) {
+                if(diag[k].toString() === 'x,x') {
+                return diag[k];
+                }
+            }
+            return null;
+        }
+    };
+    
+    
+    //COMPUTER GOES FIRST
+    
     //FIRST TURN
-    if(spacesLeft.length === 9) {
+    if(turnCount === 0) {
         var random = Math.round(Math.random() * 4);
         var randomInput = ['s1', 's3', 's7', 's9'];
         input(randomInput[random], playerTwo);
-        console.log(randomInput[random]);
+    }
+    
+    //TURN TWO
+    else if(turnCount === 2) {
+        switch(computerOrder[0]) {
+            case 's1':
+                input('s9', playerTwo);
+                break;
+            case 's3':
+                input('s7', playerTwo);
+                break;
+            case 's7':
+                input('s3', playerTwo);
+                break;
+            case 's9':
+                input('s1', playerTwo);
+                break;
+        }
+    }
+    //TURN THREE
+    else if(turnCount === 4) {
+        if(midCheck() !== null) {
+            
+        }
     }
 };
 
-
-/*
-FIX WIN CHECK
-*/
-
-//WIN
-//PLAYER ONE
-var playerOneWin = function() {
-    gameLive = false;
-    if(winCheck() === true) {
-        return true;
-    }
-    else if(winCheck() === false) {
-        return false;
-    }
+//PLAYERINPUT
+var playerInput = function(arg, input) {
+    playerOrder.push(arg);
+    input(arg, input);
 };
-
-//PLAYER TWO
-var playerTwoWin = function() {
-    gameLive = false;
-    if(wincheck() === true) {
-        return false;
-    }
-    else if(wincheck() === false) {
-        return true;
-    }
-};
-
 
 //WINCHECK
 var winCheck = function() {
@@ -128,10 +193,20 @@ var winCheck = function() {
     for(var i = 0; i < horiz.length; i++) {
         if(horiz[i].length === 3) {
             if(horiz[i].toString() === 'x,x,x') {
-                return true;
+                if(playerOne = 'x') {
+                    return "playeronewin";
+                }
+                else if(playerTwo = 'x') {
+                    return "playertwowin";
+                }
             }
             else if(horiz[i].toString() === 'o,o,o') {
-                return false;
+                if(playerOne = 'o') {
+                    return "playeronewin";
+                }
+                else if(playerTwo === 'o') {
+                    return "playertwowin";
+                }
             }
         }
     }
@@ -140,10 +215,20 @@ var winCheck = function() {
     for(var l = 0; l < vert.length; l++) {
         if(vert[l].length === 3) {
             if(vert[l].toString() === 'x,x,x') {
-                return true;
+                if(playerOne = 'x') {
+                    return 'playeronewin';
+                }
+                else if(playerTwo = 'x') {
+                    return 'playertwowin';
+                }
             }
             else if(vert[l].toString() === 'o,o,o') {
-                return false;
+                if(playerOne = 'o') {
+                    return 'playeronewin';
+                }
+                else if(playerTwo = 'o') {
+                    return 'playertwowin';
+                }
             }
         }
     }
@@ -152,10 +237,20 @@ var winCheck = function() {
     for(var k = 0; k < diag.length; k++) {
         if(diag[k].length === 3) {
             if(diag[k].toString() === 'x,x,x') {
-                return true;
+                if(playerOne = 'x') {
+                    return 'playeronewin';
+                }
+                else if(playerTwo = 'x') {
+                    return 'playertwowin';
+                }
             }
             else if(diag[k].toString() === 'o,o,o') {
-                return false;
+                if(playerOne = 'o') {
+                    return 'playeronewin';
+                }
+                else if(playerTwo ='o') {
+                    return 'playertwowin';
+                }
             }
         }
     }
@@ -185,16 +280,41 @@ var playerID = function(arg) {
 
 //FIRST TURN
 var firstTurn = function(arg) {
-    if(arg = playerOne) {
+    if(arg = '1') {
         playerTurn = true;
         computerTurn = false;
     }
-    else if(arg === playerTwo) {
+    else if(arg === '2') {
         playerTurn = false;
         computerTurn = true;
     }
 };
 
-input('s1', playerOne);
-console.log(spacesLeft.indexOf('s1'));
+//GAMEOVER
+var gameOver = function() {
+    gameLive = false;
+    playerTurn = false;
+    computerTurn = false;
+    spacesLeft = ['s1', 's2', 's3', 's4', 's5', 's6', 's7', 's8', 's9'];
+    playerOrder = [];
+    computerOrder = [];
+    lastTurn = '';
+    turnCount = 0;
+};
+
+//JQuery
+//$(document).ready(function() {
+//    
+//    //START BUTTON
+//    $('.start').click(function() {
+//        gameStart();
+//        firstTurn($('.firstturn').val());
+//        playerID($('.playerid').val());
+//    });
+//    
+//    
+//
+//});
+
+
 console.log(spacesLeft);

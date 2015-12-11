@@ -26,6 +26,17 @@
                     </div>
                     <div class='game-settings'>
                         <form class='settings'>
+                            <label>Player One Letter:</label><br />
+                            <select class='playerid'>
+                                <option value='x'>X</option>
+                                <option value='o'>O</option>
+                            </select> <br />
+                        <label>First Turn:</label><br />
+                            <select class='firstturn'>
+                                <option value='1'>Player One</option>
+                                <option value='2'>Player Two</option>
+                            </select> <br />
+                            <label>Number of Players:</label>
                             <select class='players'>
                                 <option value="1">1 Player</option>
                                 <option value="2">2 Player</option>
@@ -82,12 +93,14 @@
                 </div>
                 <div class='win'>
                     <h1 id='win'>zzz</h1>
+                    <h1 id='counterone'>0</h1>
+                    <h1 id='countertwo'>0</h1>
                 </div>
                 
             </div>
             
 
-            
+
         </div> <!--END WRAP-->
         
     </body>

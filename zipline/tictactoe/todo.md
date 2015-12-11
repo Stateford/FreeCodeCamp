@@ -15,4 +15,4 @@ TO DO
 * Add a twoplayer option
 
 ## CURRENT
-* Fix winCheck \ playerOneWin \ playerTwoWin
+* add square checker
