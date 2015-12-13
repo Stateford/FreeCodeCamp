@@ -15,4 +15,4 @@ TO DO
 * Add a twoplayer option
 
 ## CURRENT
-* Fix ai's ability to check for winning moves
+* Fix ai's ability to check for winning moves -- this is caused at turn 3
