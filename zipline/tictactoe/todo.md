@@ -15,4 +15,4 @@ TO DO
 * Add a twoplayer option
 
 ## CURRENT
-* add square checker
+* Fix ai's ability to check for winning moves
