@@ -1,0 +1,11 @@
+/*OVERALL*/
+
+/*BACKGROUND IMAGE*/
+
+body {
+    margin: 0;
+    background-image: url('http://www.goodfreephotos.com/albums/places/wisconsin/mirror-lake-state-park/wisconsin-mirror-lake-state-park-lake-reflection-and-landscape.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+

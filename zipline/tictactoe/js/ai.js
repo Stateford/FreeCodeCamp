@@ -123,47 +123,22 @@ var computerPlayer = function() {
     playerOrder.sort();
 
     //CHECK IF PLAYER ABOUT TO WIN
-    function midCheck() {
-        if(playerTwo === 'o') {
-            for(var i = 0; i < horiz.length; i++) {
-                if(horiz[i].toString() === 'x,x') {
-                    return horiz[i];
-                }
-            }
-            for(var l = 0; l < vert.length; l++) {
-                    if(vert[l].toString() === 'x,x') {
-                        return vert[l];
-                    }
-            }
-            for(var k = 0; k < diag.length; k++) {
-                if(diag[k].toString() === 'x,x') {
-                    return diag[k];
-                }
-            }
-        }
 
-        else if(playerTwo === 'x') {
-            for(var i = 0; i < horiz.length; i++) {
-                if(horiz[i].toString() === 'x,x') {
-                    return horiz[i];
-                }
-            }
-            for(var l = 0; l < vert.length; l++) {
-                if(vert[l].toString() === 'x,x') {
-                return vert[l];
-                }
-            }
-            for(var k = 0; k < diag.length; k++) {
-                if(diag[k].toString() === 'x,x') {
-                return diag[k];
-                }
-            }
-        }
-        else {
-            return 'idiet';
+    /*
+
+    FIX MID CHECK
+    REDO
+    CURRENTLY BROKEN
+
+    */
+
+    var midCheck = function(arr) {
+        for(var i = 0; i < arr.length; i++) {
+            if()
         }
     };
-
+    
+//console.log(midCheck());
 
     //COMPUTER GOES FIRST
 
@@ -212,7 +187,7 @@ var computerPlayer = function() {
                 input('s9', playerTwo);
             }
             else {
-                var random = Math.round(Math.random() * spacesLeft.length);
+                var random = Math.round(Math.random() * spacesLeft.length - 1);
 
                 computerOrder.push(spacesLeft[random]);
                 input(spacesLeft[random], playerTwo);
@@ -262,166 +237,7 @@ var computerPlayer = function() {
 
     //TURN THREE
     else if(turnCount >= 3 && computerTurn) {
-        if(midCheck() !== 'idiet') {
-
-            function thisArr(arr) {
-                for(var i = 0; i < arr.length; i++) {
-
-                    if(midCheck() === horiz[i]) {
-                        for(var k = 0; k <lockout[0].length; k++) {
-                            if(lockout[i][k] === false) {
-                                if(i === 0) {
-                                    switch(k) {
-                                        case 0:
-                                            input('s1', playerTwo);
-                                            break;
-                                        case 1:
-                                            input('s2', playerTwo);
-                                            break;
-                                        case 2:
-                                            input('s3', playerTwo);
-                                            break;
-                                        default:
-                                            console.log('something went wrong');
-                                            break;
-                                    }
-                                }
-                                else if(i === 1) {
-                                    switch(k) {
-                                        case 0:
-                                            input('s4', playerTwo);
-                                            break;
-                                        case 1:
-                                            input('s5', playerTwo);
-                                            break;
-                                        case 2:
-                                            input('s6', playerTwo);
-                                            break;
-                                        default:
-                                            console.log('something went wrong');
-                                            break;
-                                    }
-                                }
-                                else if(i === 2) {
-                                    switch(k) {
-                                        case 0:
-                                            input('s7', playerTwo);
-                                            break;
-                                        case 1:
-                                            input('s8', playerTwo);
-                                            break;
-                                        case 2:
-                                            input('s9', playerTwo);
-                                            break;
-                                        default:
-                                            console.log('something went wrong');
-                                            break;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    else if(midCheck() === vert[i]) {
-                        for(var k = 0; k < lockoutVert[i].length; k++) {
-                            if(lockoutVert[i][k] === false) {
-                                if(i === 0) {
-                                    switch(k) {
-                                        case 0:
-                                            input('s1', playerTwo);
-                                            break;
-                                        case 1:
-                                            input('s4', playerTwo);
-                                            break;
-                                        case 2:
-                                            input('s7', playerTwo);
-                                        default:
-                                            console.log('something went wrong');
-                                            break;
-                                    }
-                                }
-                                else if(i === 1) {
-                                    switch(k) {
-                                        case 0:
-                                            input('s2', playerTwo);
-                                            break;
-                                        case 1:
-                                            input('s5', playerTwo);
-                                            break;
-                                        case 2:
-                                            input('s8', playerTwo);
-                                            break;
-                                        default:
-                                            console.log('something went wrong');
-                                            break;
-                                    }
-                                }
-                                else if(i === 2) {
-                                    switch(k) {
-                                        case 0:
-                                            input('s3', playerTwo);
-                                            break;
-                                        case 1:
-                                            input('s6', playerTwo);
-                                            break;
-                                        case 2:
-                                            input('s9', playerTwo);
-                                            break;
-                                        default:
-                                            console.log('something went wrong');
-                                            break;
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                        else if(midCHeck() === diag[i]) {
-                            for(var k = 0; k < lockoutDiag[i].length; k++) {
-                                if(lockoutDiag[i][k] === false) {
-                                    if(i === 0) {
-                                        switch(k) {
-                                            case 0:
-                                                input('s1', playerTwo);
-                                                break;
-                                            case 1:
-                                                input('s5', playerTwo);
-                                                break;
-                                            case 2:
-                                                input('s9', playerTwo);
-                                                break;
-                                            default:
-                                                console.log('something went wrong');
-                                                break;
-                                        }
-                                    }
-                                    else if(i === 1) {
-                                        switch(k) {
-                                            case 0:
-                                                input('s3', playerTwo);
-                                                break;
-                                            case 1:
-                                                input('s5', playerTwo);
-                                                break;
-                                            case 2:
-                                                input('s7', playerTwo);
-                                                break;
-                                            default:
-                                                console.log('something went wrong');
-                                                break;
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-//            thisArr(midCheck());
-        }
-        else if(midCheck() === 'idiet') {
-            var random = Math.round(Math.random() * spacesLeft.length);
-
-            computerOrder.push(spacesLeft[random]);
-            input(spacesLeft[random], playerTwo);
-        }
+        
     }
     playerTurn = true;
 };
@@ -447,9 +263,9 @@ var playerInput = function(arg) {
 };
 
 computerPlayer();
-playerInput(spacesLeft[Math.round(Math.random() * spacesLeft.length)]);
+playerInput(spacesLeft[Math.round(Math.random() * (spacesLeft.length - 1))]);
 computerPlayer();
-playerInput(spacesLeft[Math.round(Math.random() * spacesLeft.length)]);
+playerInput(spacesLeft[Math.round(Math.random() * (spacesLeft.length - 1))]);
 computerPlayer();
 
 console.log('PLAYERORDER');
