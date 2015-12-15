@@ -3,6 +3,20 @@ var gameLive = false;
 var playerTurn = false;
 var computerTurn = true;
 var spacesLeft = ['s1', 's2', 's3', 's4', 's5', 's6', 's7', 's8', 's9'];
+var spacesLeftHoriz = [
+    ['s1', 's2', 's3'],
+    ['s4', 's5', 's6'],
+    ['s7', 's8', 's9']
+];
+var spacesLeftVert = [
+    ['s1', 's4', 's7'],
+    ['s4', 's5', 's6'],
+    ['s3', 's6', 's9']
+];
+var spacesLeftDiag = [
+    ['s1', 's5', 's9'],
+    ['s3', 's5', 's7'],
+];
 var playerOrder = [];
 var computerOrder = [];
 var lastTurn = '';
@@ -122,6 +136,11 @@ var computerPlayer = function() {
     computerOrder.sort();
     playerOrder.sort();
 
+    //VARS TO CHECK WIN OUTPUT
+    var winArray = '';
+    var winNum = 0;
+    var winImp = false;
+
     //CHECK IF PLAYER ABOUT TO WIN
 
     /*
@@ -132,12 +151,85 @@ var computerPlayer = function() {
 
     */
 
-    var midCheck = function(arr) {
-        for(var i = 0; i < arr.length; i++) {
-            if()
+    var midCheck = function() {
+
+        if(playerTwo === 'o') {
+            for(var i = 0; i < 2; i++) {
+                if(horiz[i].toString() === 'o,o') {
+                    winArray = 'horiz';
+                    winNum = i;
+                    winImp = true;
+                    return true;
+                }
+                else if(vert[i].toString() === 'o,o') {
+                    winArray = 'vert';
+                    winNum = i;
+                    winImp = true;
+                    return true;
+                }
+                else if(diag[i].toString() === 'o,o') {
+                    winArray = 'diag';
+                    winNum = i;
+                    winImp = true;
+                    return true;
+                }
+                else if(horiz[i].toString() === 'x,x') {
+                    winArray = 'horiz';
+                    winNum = i;
+                    return true;
+                }
+                else if(vert[i].toString() === 'x,x') {
+                    winArray = 'vert';
+                    winNum = i;
+                    return true;
+                }
+                else if(diag[i].toString() === 'x,x') {
+                    winArray = 'diag';
+                    winNum = i;
+                    return true;
+                }
+            }
         }
+        else if(playerTwo === 'x') {
+            for(var i = 0; i < 2; i++) {
+                if(horiz[i].toString() === 'x,x') {
+                    winArray = 'horiz';
+                    winNum = i;
+                    winImp = true;
+                    return true;
+                }
+                else if(vert[i].toString() === 'x,x') {
+                    winArray = 'vert';
+                    winNum = i;
+                    winImp = true;
+                    return true;
+                }
+                else if(diag[i].toString() === 'x,x') {
+                    winArray = 'diag';
+                    winNum = i;
+                    winImp = true;
+                    return true;
+                }
+                else if(horiz[i].toString === 'o,o') {
+                    winArray = 'horiz';
+                    winNum = i;
+                    return true;
+                }
+                else if(vert[i].toString() === 'o,o') {
+                    winArray = 'vert';
+                    winNum = i;
+                    return true;
+                }
+                else if(diag[i].toString() === 'o,o') {
+                    winArray = 'diag';
+                    winNum = i;
+                    return true;
+                }
+            }
+        }
+        return false;
     };
-    
+
 //console.log(midCheck());
 
     //COMPUTER GOES FIRST
@@ -227,7 +319,7 @@ var computerPlayer = function() {
                 input('s7', playerTwo);
             }
             else {
-                var random = Math.round(Math.random() * spacesLeft.length);
+                var random = Math.round(Math.random() * spacesLeft.length - 1);
 
                 computerOrder.push(spacesLeft[random]);
                 input(spacesLeft[random], playerTwo);
@@ -237,7 +329,66 @@ var computerPlayer = function() {
 
     //TURN THREE
     else if(turnCount >= 3 && computerTurn) {
-        
+        if(midCheck()) {
+            if(winImp) {
+                if(winArray = 'horiz') {
+                    for(var i = 0; i < lockout[winNum].length; i++) {
+                        if(lockout[winNum][i] === false) {
+                            computerOrder.push(spacesLeftHoriz[winNum][i]);
+                            input(spacesLeftHoriz[winNum][i], playerTwo);
+                        }
+                    }
+                }
+                else if(winArray = 'vert') {
+                    for(var i = 0; i < lockoutVert[winNum].length; i++) {
+                        if(lockoutVert[winNum][i] === false) {
+                            computerOrder.push(spacesLeftVert[winNum][i]);
+                            input(spacesLeftVert[winNum][i], playerTwo);
+                        }
+                    }
+                }
+                else if(winArray = 'diag') {
+                    for(var i = 0; i < lockoutDiag[winNum].length; i++) {
+                        if(lockoutDiag[winNum][i] === false) {
+                            computerOrder.push(spacesLeftDiag[winNum][i]);
+                            input(spacesLeftDiag[winNum][i]);
+                        }
+                    }
+                }
+            }
+            else if(winImp === false) {
+                if(winArray = 'horiz') {
+                    for(var i = 0; i < lockout[winNum].length; i++) {
+                        if(lockout[winNum][i] === false) {
+                            computerOrder.push(spacesLeftHoriz[winNum][i]);
+                            input(spacesLeftHoriz[winNum][i], playerTwo);
+                        }
+                    }
+                }
+                else if(winArray = 'vert') {
+                    for(var i = 0; i < lockoutVert[winNum].length; i++) {
+                        if(lockoutVert[winNum][i] === false) {
+                            computerOrder.push(spacesLeftVert[winNum][i]);
+                            input(spacesLeftVert[winNum][i], playerTwo);
+                        }
+                    }
+                }
+                else if(winArray = 'diag') {
+                    for(var i = 0; i < lockoutDiag[winNum].length; i++) {
+                        if(lockoutDiag[winNum][i] === false) {
+                            computerOrder.push(spacesLeftDiag[winNum][i]);
+                            input(spacesLeftDiag[winNum][i], playerTwo);
+                        }
+                    }
+                }
+            }
+        }
+        if(midCheck() === false) {
+            var random = Math.round(Math.random() * spacesLeft.length - 1);
+
+            computerOrder.push(spacesLeft[random]);
+            input(spacesLeft[random], playerTwo);
+        }
     }
     playerTurn = true;
 };
@@ -267,6 +418,7 @@ playerInput(spacesLeft[Math.round(Math.random() * (spacesLeft.length - 1))]);
 computerPlayer();
 playerInput(spacesLeft[Math.round(Math.random() * (spacesLeft.length - 1))]);
 computerPlayer();
+playerInput(spacesLeft[Math.round(Math.random() * (spacesLeft.length - 1))]);
 
 console.log('PLAYERORDER');
 console.log(playerOrder);
