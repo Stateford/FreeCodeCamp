@@ -3,20 +3,6 @@ var gameLive = false;
 var playerTurn = false;
 var computerTurn = true;
 var spacesLeft = ['s1', 's2', 's3', 's4', 's5', 's6', 's7', 's8', 's9'];
-var spacesLeftHoriz = [
-    ['s1', 's2', 's3'],
-    ['s4', 's5', 's6'],
-    ['s7', 's8', 's9']
-];
-var spacesLeftVert = [
-    ['s1', 's4', 's7'],
-    ['s4', 's5', 's6'],
-    ['s3', 's6', 's9']
-];
-var spacesLeftDiag = [
-    ['s1', 's5', 's9'],
-    ['s3', 's5', 's7'],
-];
 var playerOrder = [];
 var computerOrder = [];
 var lastTurn = '';
@@ -26,15 +12,43 @@ var playerOne = 'x';
 var playerTwo = 'o';
 
 //LOCKOUT
-var s1 = false;
-var s2 = false;
-var s3 = false;
-var s4 = false;
-var s5 = false;
-var s6 = false;
-var s7 = false;
-var s8 = false;
-var s9 = false;
+var s1 = {
+    name: 's1',
+    value: false
+};
+var s2 = {
+    name: 's2',
+    value: false
+};
+var s3 = {
+    name: 's3',
+    value: false
+};
+var s4 = {
+    name: 's4',
+    value: false
+}
+var s5 = {
+    name: 's5',
+    value: false
+};
+var s6 = {
+    name: 's6',
+    value: false
+};
+var s7 = {
+    name: 's7',
+    value: false
+};
+var s8 = {
+    name: 's8',
+    value: false
+};
+var s9 = {
+    name: 's9',
+    value: false
+};
+
 var lockout = [
     [s1, s2, s3],
     [s4, s5, s6],
@@ -76,52 +90,52 @@ var input = function(arg, input) {
     turnCount++;
     lastTurn = arg;
 
-    if(arg === 's1' && s1 === false) {
+    if(arg.name === 's1' && s1.value === false) {
         horiz[0].push(input);
         vert[0].push(input);
         diag[0].push(input);
         s1 = true;
     }
-    else if(arg === 's2' && s2 === false) {
+    else if(arg.name === 's2' && s2 === false) {
         horiz[0].push(input);
         vert[1].push(input);
         s2 = true;
     }
-    else if(arg === 's3' && s3 === false) {
+    else if(arg.name === 's3' && s3 === false) {
         horiz[0].push(input);
         vert[2].push(input);
         diag[1].push(input);
         s3 = true;
     }
-    else if(arg === 's4' && s4 === false) {
+    else if(arg.name === 's4' && s4 === false) {
         horiz[1].push(input);
         vert[0].push(input);
         s4 = true
     }
-    else if(arg === 's5' && s5 === false) {
+    else if(arg.name === 's5' && s5 === false) {
         horiz[1].push(input);
         vert[1].push(input);
         diag[0].push(input);
         diag[1].push(input);
         s5 = true;
     }
-    else if(arg === 's6' && s6 === false) {
+    else if(arg.name === 's6' && s6 === false) {
         horiz[1].push(input);
         vert[2].push(input);
         s6 = true;
     }
-    else if(arg === 's7' && s7 === false) {
+    else if(arg.name === 's7' && s7 === false) {
         horiz[2].push(input);
         vert[0].push(input);
         diag[1].push(input);
         s7 = true;
     }
-    else if(arg === 's8' && s8 === false) {
+    else if(arg.name === 's8' && s8 === false) {
         horiz[2].push(input);
         vert[1].push(input);
         s8 = true;
     }
-    else if(arg === 's9' && s9 === false) {
+    else if(arg.name === 's9' && s9 === false) {
         horiz[2].push(input);
         vert[2].push(input);
         diag[0].push(input);
@@ -237,7 +251,7 @@ var computerPlayer = function() {
     //FIRST TURN
     if(turnCount === 0 && computerTurn) {
         var random = Math.round(Math.random() * 3);
-        var randomInput = ['s1', 's3', 's7', 's9'];
+        var randomInput = [s1.name, s3.name, s7.name, s9.name];
 
         input(randomInput[random], playerTwo);
         computerOrder.push(randomInput[random]);
@@ -245,13 +259,13 @@ var computerPlayer = function() {
 
     //TURN TWO
     else if(turnCount === 2 && computerTurn) {
-        if(computerOrder[0] === 's1') {
-            if(s9 === false) {
-            computerOrder.push('s9')
-            input('s9', playerTwo);
+        if(computerOrder[0].name === 's1') {
+            if(s9.value === false) {
+            computerOrder.push(s9.name)
+            input(s9, playerTwo);
             }
-            else if(s3 === false) {
-                computerOrder.push('s3')
+            else if(s3.value === false) {
+                computerOrder.push(s3.name);
                 input('s3', playerTwo);
             }
             else if(s7 === false) {
@@ -329,7 +343,14 @@ var computerPlayer = function() {
 
     //TURN THREE
     else if(turnCount >= 3 && computerTurn) {
-        if(midCheck()) {
+        console.log(midCheck());
+        if(midCheck() === false) {
+            var random = Math.round(Math.random() * spacesLeft.length - 1);
+
+            computerOrder.push(spacesLeft[random]);
+            input(spacesLeft[random], playerTwo);
+        }
+        else if(midCheck()) {
             if(winImp) {
                 if(winArray = 'horiz') {
                     for(var i = 0; i < lockout[winNum].length; i++) {
@@ -351,7 +372,7 @@ var computerPlayer = function() {
                     for(var i = 0; i < lockoutDiag[winNum].length; i++) {
                         if(lockoutDiag[winNum][i] === false) {
                             computerOrder.push(spacesLeftDiag[winNum][i]);
-                            input(spacesLeftDiag[winNum][i]);
+                            input(spacesLeftDiag[winNum][i], playerTwo);
                         }
                     }
                 }
@@ -383,14 +404,9 @@ var computerPlayer = function() {
                 }
             }
         }
-        if(midCheck() === false) {
-            var random = Math.round(Math.random() * spacesLeft.length - 1);
-
-            computerOrder.push(spacesLeft[random]);
-            input(spacesLeft[random], playerTwo);
-        }
     }
     playerTurn = true;
+    computerTurn = false;
 };
 
 
@@ -426,3 +442,4 @@ console.log('COMPUTERORDER');
 console.log(computerOrder);
 console.log('SPACESLEFT');
 console.log(spacesLeft);
+console.log(s1.name);

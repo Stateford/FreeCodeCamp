@@ -17,3 +17,4 @@ TO DO
 ## CURRENT
 * Fix ai's ability to check for winning moves -- this is caused at turn 3
 * Fix midCheck(); --ai.js == test
+* Redo everything to use new object classes
