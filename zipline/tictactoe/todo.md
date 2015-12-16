@@ -15,6 +15,4 @@ TO DO
 * Add a twoplayer option
 
 ## CURRENT
-* Fix ai's ability to check for winning moves -- this is caused at turn 3
-* Fix midCheck(); --ai.js == test
-* Redo everything to use new object classes
+* add third round move to use random corner

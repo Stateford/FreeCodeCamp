@@ -190,27 +190,31 @@ var winCheck = function() {
                     gameOver();
                     winCount++;
                     return 'Player One Wins';
+                    break;
                 }
                 else if(winArr[i][str].toString() === 'o,o,o') {
                     gameOver();
                     winCount = 0;
                     return 'Player Two Wins';
+                    break;
                 }
             }
         }
     }
-    if(playerOne === 'o') {
+    else if(playerOne === 'o') {
         for(var i = 0; i < winArr.length; i++) {
             for(str in winArr[i]) {
                 if(winArr[i][str].toString() === 'o,o,o') {
                     gameOver();
                     winCount++;
                     return 'Player One Wins';
+                    break;
                 }
                 else if(winArr[i][str].toString() === 'x,x,x') {
                     gameOver();
                     winCount = 0;
                     return 'Player Two Win';
+                    break;
                 }
             }
         }
@@ -255,11 +259,13 @@ var computerPlayer = function() {
                         winIndex = [str];
                         winImp = true;
                         return true;
+                        break;
                     }
                     else if(arrCheck[i][str].toString() === 'x,x') {
                         winArr = strCheck[i];
                         winIndex = [str];
                         return true;
+                        break;
                     }
                 }
             }
@@ -272,11 +278,13 @@ var computerPlayer = function() {
                         winIndex = [str];
                         winImp = true;
                         return true;
+                        break;
                     }
                     else if(arrCheck[i][str].toString() === 'o,o') {
                         winArr = strCheck[i];
                         winIndex = [str];
                         return true;
+                        break;
                     }
                 }
             }
@@ -288,7 +296,6 @@ var computerPlayer = function() {
     if(turnCount === 0 && computerTurn) {
         var firstTurnArr = [s1, s3, s7, s9];
         var random = Math.round(Math.random() * 3);
-
         computerOrder.push(firstTurnArr[random]);
         input(firstTurnArr[random], playerTwo);
     }
