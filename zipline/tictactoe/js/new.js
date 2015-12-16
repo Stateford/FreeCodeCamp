@@ -3,13 +3,12 @@ var gameLive = false;
 var playerTurn = false;
 var computerTurn = true;
 var spacesLeft = ['s1', 's2', 's3', 's4', 's5', 's6', 's7', 's8', 's9'];
-var spacesLeftRandom = [s1, s2, s3, s4, s5, s6, s7, s8, s9];
 var playerOrder = [];
 var computerOrder = [];
 var turnCount = 0;
 var winCount = 0;
 var playerOne = 'x';
-var playerTwo = 'o'; 
+var playerTwo = 'o';
 
 //OBJECTS
 var s1 = {
@@ -48,6 +47,8 @@ var s9 = {
     name: 's9',
     value: false
 };
+
+var spacesLeftRandom = [s1, s2, s3, s4, s5, s6, s7, s8, s9];
 
 
 //LOCKOUT
@@ -94,10 +95,11 @@ var diag = [
 var input = function(arg1, arg2) {
     var index = spacesLeft.indexOf(arg1.name);
     spacesLeft.splice(index, 1);
-    
+
     var index2 = spacesLeftRandom.indexOf(arg1);
     spacesLeftRandom.splice(index2, 1);
-    
+    console.log('input');
+
     if(arg1.name === 's1' && arg1.value === false) {
         horiz[0].push(arg2);
         vert[0].push(arg2);
@@ -173,21 +175,26 @@ var resetGame = function() {
     diag = [[],[]];
     playerOrder = [];
     computerOrder = [];
-    gameStart();
+    startGame();
 };
 
 //WINCHECKER
 var winCheck = function() {
     var winArr = [horiz, vert, diag];
-    
+    console.log('wincheck');
+
     if(playerOne === 'x') {
         for(var i = 0; i < winArr.length; i++) {
             for(str in winArr[i]) {
                 if(winArr[i][str].toString() === 'x,x,x') {
-                    return 'playerOneWin';
+                    gameOver();
+                    winCount++;
+                    return 'Player One Wins';
                 }
                 else if(winArr[i][str].toString() === 'o,o,o') {
-                    return 'playerTwoWin';
+                    gameOver();
+                    winCount = 0;
+                    return 'Player Two Wins';
                 }
             }
         }
@@ -196,14 +203,19 @@ var winCheck = function() {
         for(var i = 0; i < winArr.length; i++) {
             for(str in winArr[i]) {
                 if(winArr[i][str].toString() === 'o,o,o') {
-                    return 'playerOneWin';
+                    gameOver();
+                    winCount++;
+                    return 'Player One Wins';
                 }
                 else if(winArr[i][str].toString() === 'x,x,x') {
-                    return 'playerTwoWin';
+                    gameOver();
+                    winCount = 0;
+                    return 'Player Two Win';
                 }
             }
         }
     }
+    return false;
 };
 
 //GAMEOVER
@@ -224,16 +236,17 @@ var computerPlayer = function() {
     spacesLeft.sort();
     computerOrder.sort();
     playerOrder.sort();
-    
+
     var winArr = '';
     var winIndex = 0;
     var winImp = false;
-    
+    console.log('computer player')
+
     //CHECK FOR NEXT TURN WIN CONDITIONS
     var midCheck = function() {
         var arrCheck = [horiz, vert, diag];
         var strCheck = ['horiz', 'vert', 'diag'];
-        
+
         if(playerTwo === 'o') {
             for(var i = 0; i < arrCheck.length; i++) {
                 for(str in arrCheck[i]) {
@@ -270,15 +283,16 @@ var computerPlayer = function() {
         }
     return false;
     }
-    
+
     //TURN ONE
     if(turnCount === 0 && computerTurn) {
         var firstTurnArr = [s1, s3, s7, s9];
         var random = Math.round(Math.random() * 3);
-        
+
         computerOrder.push(firstTurnArr[random]);
         input(firstTurnArr[random], playerTwo);
     }
+    //TURN TWO
     else if(turnCount === 2 && computerTurn) {
         var secTurnArr = [s1, s3, s7, s9];
         var index = secTurnArr.indexOf(computerOrder[0]);
@@ -287,6 +301,7 @@ var computerPlayer = function() {
         computerOrder.push(secTurnArr[random]);
         input(secTurnArr[random], playerTwo);
     }
+    //TURN THREE++
     else if(turnCount >= 3 && computerTurn) {
         if(midCheck() === true) {
             if(winArr === 'horiz') {
@@ -315,24 +330,198 @@ var computerPlayer = function() {
             }
         }
         else if(midCheck() === false) {
-            
+            var index = Math.round(Math.random() * (spacesLeftRandom.length - 1));
+            var randomInput = spacesLeftRandom[index];
+            computerOrder.push(randomInput);
+            input(randomInput, playerTwo);
         }
     }
-    
-    
+
+
     computerTurn = false;
     playerTurn = true;
-    console.log(midCheck());
 };
 
+//PLAYER ID
+var playerID = function(arg) {
+    if(arg = 'x') {
+        playerOne = 'x';
+        playerTwo = 'o';
+    }
+    else if(arg = 'o') {
+        playerOne = 'o';
+        playerTwo = 'x';
+    }
+};
 
-//DEBUG
-s1.value = true;
-s2.value = true;
-horiz = [['x','x'],[],[]];
-computerTurn = true;
-turnCount = 3;
-computerPlayer();
+//JQUERY
+$(document).ready(function() {
 
-console.log(horiz);
 
+    //START BUTTON
+
+    $('.start').click(function() {
+        console.log('startgame');
+        playerID($('#playerid').val());
+        startGame();
+        computerDisp();
+    });
+
+    //RESET BUTTON
+    $('.reset').click(function() {
+        console.log('reset');
+        if(gameLive) {
+            winCount = 0;
+            resetGame();
+            clearDisp();
+        }
+    });
+
+
+    //DISPLAY
+
+    var clearDisp = function() {
+        computerTurn = true;
+        playerTurn = false;
+        var array = ['s1', 's2', 's3', 's4', 's5', 's6', 's7', 's8', 's9'];
+
+        for(var i = 0; i < array.length; i++) {
+            $('#' + array[i] + ' p').text('');
+        };
+        computerPlayer();
+    };
+
+
+    //AI DISP
+    var computerDisp = function() {
+        $('#' + computerOrder[computerOrder.length - 1].name + ' p').text(playerTwo);
+    };
+
+
+    //BUTTON CLICKS
+    //S1
+    $('#s1').click(function() {
+        if(gameLive && s1.value === false && playerTurn) {
+            playerInput(s1);
+            $('#s1 p').text(playerOne);
+            computerPlayer();
+            computerDisp();
+            if(winCheck() !== false) {
+                gameOver();
+                $('#win').text(winCheck());
+            }
+        }
+    });
+
+    //S2
+    $('#s2').click(function() {
+        if(gameLive && s2.value === false && playerTurn) {
+            playerInput(s2);
+            $('#s2 p').text(playerOne);
+            computerPlayer();
+            computerDisp();
+            if(winCheck() !== false) {
+                gameOver();
+                $('#win').text(winCheck());
+            }
+        }
+    });
+
+    //S3
+    $('#s3').click(function() {
+        if(gameLive && s3.value === false && playerTurn) {
+            playerInput(s3);
+            $('#s3 p').text(playerOne);
+            computerPlayer();
+            computerDisp();
+            if(winCheck() !== false) {
+                gameOver();
+                $('#win').text(winCheck());
+            }
+        }
+    });
+
+    //S4
+    $('#s4').click(function() {
+        if(gameLive && s4.value === false && playerTurn) {
+            playerInput(s4);
+            $('#s4 p').text(playerOne);
+            computerPlayer();
+            computerDisp();
+            if(winCheck() !== false) {
+                gameOver();
+                $('#win').text(winCheck());
+            }
+        }
+    });
+
+    //S5
+    $('#s5').click(function() {
+        if(gameLive && s5.value === false && playerTurn) {
+            playerInput(s5);
+            $('#s5 p').text(playerOne);
+            computerPlayer();
+            computerDisp();
+            if(winCheck() !== false) {
+                gameOver();
+                $('#win').text(winCheck());
+            }
+        }
+    });
+
+    //S6
+    $('#s6').click(function() {
+        if(gameLive && s6.value === false && playerTurn) {
+            playerInput(s6);
+            $('#s6 p').text(playerOne);
+            computerPlayer();
+            computerDisp();
+            if(winCheck() !== false) {
+                gameOver();
+                $('#win').text(winCheck());
+            }
+        }
+    });
+
+    //S7
+    $('#s7').click(function() {
+        if(gameLive && s7.value === false && playerTurn) {
+            playerInput(s7);
+            $('#s7 p').text(playerOne);
+            computerPlayer();
+            computerDisp();
+            if(winCheck() !== false) {
+                gameOver();
+                $('#win').text(winCheck());
+            }
+        }
+    });
+
+    //S8
+    $('#s8').click(function() {
+        if(gameLive && s8.value === false && playerTurn) {
+            playerInput(s8);
+            $('#s8 p').text(playerOne);
+            computerPlayer();
+            computerDisp();
+            if(winCheck() !== false) {
+                gameOver();
+                $('#win').text(winCheck());
+            }
+        }
+    });
+
+    //S9
+    $('#s9').click(function() {
+        if(gameLive && s9.value === false && playerTurn) {
+            playerInput(s9);
+            $('#s9 p').text(playerOne);
+            computerPlayer();
+            computerDisp();
+            if(winCheck() !== false) {
+                gameOver();
+                $('#win').text(winCheck());
+            }
+        }
+    });
+});

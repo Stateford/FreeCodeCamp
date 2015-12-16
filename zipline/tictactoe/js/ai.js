@@ -404,6 +404,9 @@ var computerPlayer = function() {
                 }
             }
         }
+        else if(midCheck() === false) {
+            
+        }
     }
     playerTurn = true;
     computerTurn = false;
@@ -429,17 +432,20 @@ var playerInput = function(arg) {
     }
 };
 
-computerPlayer();
-playerInput(spacesLeft[Math.round(Math.random() * (spacesLeft.length - 1))]);
-computerPlayer();
-playerInput(spacesLeft[Math.round(Math.random() * (spacesLeft.length - 1))]);
-computerPlayer();
-playerInput(spacesLeft[Math.round(Math.random() * (spacesLeft.length - 1))]);
+// computerPlayer();
+// playerInput(spacesLeft[Math.round(Math.random() * (spacesLeft.length - 1))]);
+// computerPlayer();
+// playerInput(spacesLeft[Math.round(Math.random() * (spacesLeft.length - 1))]);
+// computerPlayer();
+// playerInput(spacesLeft[Math.round(Math.random() * (spacesLeft.length - 1))]);
+//
+// console.log('PLAYERORDER');
+// console.log(playerOrder);
+// console.log('COMPUTERORDER');
+// console.log(computerOrder);
+// console.log('SPACESLEFT');
+// console.log(spacesLeft);
+// console.log(s1.name);
 
-console.log('PLAYERORDER');
-console.log(playerOrder);
-console.log('COMPUTERORDER');
-console.log(computerOrder);
-console.log('SPACESLEFT');
-console.log(spacesLeft);
-console.log(s1.name);
+
+
