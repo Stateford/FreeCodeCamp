@@ -9,6 +9,7 @@ var turnCount = 0;
 var winCount = 0;
 var playerOne = 'x';
 var playerTwo = 'o';
+var twoPlayer = false;
 
 //OBJECTS
 var s1 = {
@@ -156,6 +157,15 @@ var playerInput = function(arg) {
     }
 };
 
+var playerTwoInput = function(arg) {
+    if(computerTurn && twoPlayer && arg.vale === false) {
+        computerOrder.push(arg);
+        input(arg, playerTwo);
+        computerTurn = false;
+        playerTurn = true;
+    }
+};
+
 //STARTGAME
 var startGame = function() {
     gameLive = true;
@@ -165,8 +175,12 @@ var startGame = function() {
 
 //RESET GAME
 var resetGame = function() {
+    spacesLeft = [];
+    spacesLeftRandom = [];
     for(var i = 0; i < lockout.length; i++) {
         lockout[i].value = false;
+        spacesLeft.push(lockout[i].name);
+        spacesLeftRandom.push(lockout[i]);
     }
     playerTurn = false;
     computerTurn = false;
@@ -219,7 +233,6 @@ var winCheck = function() {
             }
         }
     }
-    return false;
 };
 
 //GAMEOVER
@@ -293,14 +306,14 @@ var computerPlayer = function() {
     }
 
     //TURN ONE
-    if(turnCount === 0 && computerTurn) {
+    if(turnCount === 0 && computerTurn && twoPlayer === false) {
         var firstTurnArr = [s1, s3, s7, s9];
         var random = Math.round(Math.random() * 3);
         computerOrder.push(firstTurnArr[random]);
         input(firstTurnArr[random], playerTwo);
     }
     //TURN TWO
-    else if(turnCount === 2 && computerTurn) {
+    else if(turnCount === 2 && computerTurn && twoPlayer === false) {
         var secTurnArr = [s1, s3, s7, s9];
         var index = secTurnArr.indexOf(computerOrder[0]);
         secTurnArr.splice(index, 1);
@@ -309,7 +322,7 @@ var computerPlayer = function() {
         input(secTurnArr[random], playerTwo);
     }
     //TURN THREE++
-    else if(turnCount >= 3 && computerTurn) {
+    else if(turnCount >= 3 && computerTurn && twoPlayer === false) {
         if(midCheck() === true) {
             if(winArr === 'horiz') {
                 for(var i = 0; i < lockoutHoriz[winIndex].length; i++) {
@@ -361,29 +374,18 @@ var playerID = function(arg) {
     }
 };
 
+//SET NUMBER OF PLAYERS
+var playerNum = function(arg) {
+    if(arg === '1') {
+        twoPlayer = false;
+    }
+    else if(arg === '2') {
+        twoPlayer = true;
+    }
+};
+
 //JQUERY
 $(document).ready(function() {
-
-
-    //START BUTTON
-
-    $('.start').click(function() {
-        console.log('startgame');
-        playerID($('#playerid').val());
-        startGame();
-        computerDisp();
-    });
-
-    //RESET BUTTON
-    $('.reset').click(function() {
-        console.log('reset');
-        if(gameLive) {
-            winCount = 0;
-            resetGame();
-            clearDisp();
-        }
-    });
-
 
     //DISPLAY
 
@@ -397,14 +399,45 @@ $(document).ready(function() {
         };
         computerPlayer();
     };
+    
 
+    //START BUTTON
 
+    $('.start').click(function() {
+        console.log('startgame');
+        playerNum($('.players').val());
+        playerID($('#playerid').val());
+        startGame();
+        computerDisp();
+        $('#winDisp').addClass('hidden');
+    });
+
+    //RESET BUTTON
+    $('.reset').click(function() {
+        console.log('reset');
+        $('#winDisp').addClass('hidden');
+        if(gameLive) {
+            winCount = 0;
+            resetGame();
+            clearDisp();
+        }
+    });
+
+    
     //AI DISP
     var computerDisp = function() {
         $('#' + computerOrder[computerOrder.length - 1].name + ' p').text(playerTwo);
     };
 
 
+    //PLAY AGAIN
+    $('#playAgain').click(function() {
+        if(gameLive === false) {
+            $('#winDisp').addClass('hidden');
+            resetGame();
+        }
+    });
+    
     //BUTTON CLICKS
     //S1
     $('#s1').click(function() {
@@ -413,9 +446,19 @@ $(document).ready(function() {
             $('#s1 p').text(playerOne);
             computerPlayer();
             computerDisp();
-            if(winCheck() !== false) {
+            if(winCheck() !== undefined) {
                 gameOver();
                 $('#win').text(winCheck());
+                $('#winDisp').removeClass('hidden');
+            }
+        }
+        else if(gameLive && s1.value === false && twoPlayer && computerTurn) {
+            playerTwoInput(s1);
+            $('#s1 p').text(playerTwo);
+            if(winCheck() !== undefined) {
+                gameOver();
+                $('#win').text(winCheck());
+                $('#winDisp').removeClass('hidden');
             }
         }
     });
@@ -427,9 +470,19 @@ $(document).ready(function() {
             $('#s2 p').text(playerOne);
             computerPlayer();
             computerDisp();
-            if(winCheck() !== false) {
+            if(winCheck() !== undefined) {
                 gameOver();
                 $('#win').text(winCheck());
+                $('#winDisp').removeClass('hidden');
+            }
+        }
+        else if(gameLive && s2.value === false && twoPlayer && computerTurn) {
+            playerTwoInput(s2);
+            $('#s2 p').text(playerTwo);
+            if(winCheck() !== undefined) {
+                gameOver();
+                $('#win').text(winCheck());
+                $('#winDisp').removeClass('hidden');
             }
         }
     });
@@ -441,9 +494,23 @@ $(document).ready(function() {
             $('#s3 p').text(playerOne);
             computerPlayer();
             computerDisp();
-            if(winCheck() !== false) {
+            if(winCheck() !== undefined) {
                 gameOver();
                 $('#win').text(winCheck());
+                $('#winDisp').removeClass('hidden');
+            }
+        }
+        else if(gameLive && s3.value === false && twoPlayer && computerTurn) {
+            playerTwoInput(s3);
+            $('#s3 p').text(playerTwo);
+            if(winCheck() !== undefined) {
+                playerTwoInput(s3);
+                $('#s3 p').text(playerTwo);
+                if(winCheck() !== undefined) {
+                    gameOver();
+                    $('#win').text(winCheck());
+                    $('#winDisp').removeClass('hidden');
+                }
             }
         }
     });
@@ -455,9 +522,19 @@ $(document).ready(function() {
             $('#s4 p').text(playerOne);
             computerPlayer();
             computerDisp();
-            if(winCheck() !== false) {
+            if(winCheck() !== undefined) {
                 gameOver();
                 $('#win').text(winCheck());
+                $('#winDisp').removeClass('hidden')
+            }
+        }
+        else if(gameLive && s4.value === false && twoPlayer && computerTurn) {
+            playerTwoInput(s4);
+            $('#s4 p').text(playerTwo);
+            if(winCheck() !== undefined) {
+                gameOver();
+                $('#win').text(winCheck());
+                $('#winDisp').removeClass('hidden');
             }
         }
     });
@@ -469,9 +546,19 @@ $(document).ready(function() {
             $('#s5 p').text(playerOne);
             computerPlayer();
             computerDisp();
-            if(winCheck() !== false) {
+            if(winCheck() !== undefined) {
                 gameOver();
                 $('#win').text(winCheck());
+                $('#winDIsp').removeClass('hidden');
+            }
+        }
+        else if(gameLive && s5.vale === false && twoPlayer && computerTurn) {
+            playerTwoInput(s5);
+            $('#s5 p').text(playerTwo);
+            if(winCheck() !== undefined) {
+                gameOver();
+                $('#win').text(winCheck());
+                $('#winDisp').removeClass('hidden');
             }
         }
     });
@@ -483,9 +570,19 @@ $(document).ready(function() {
             $('#s6 p').text(playerOne);
             computerPlayer();
             computerDisp();
-            if(winCheck() !== false) {
+            if(winCheck() !== undefined) {
                 gameOver();
                 $('#win').text(winCheck());
+                $('#winDisp').removeClass('hidden');
+            }
+        }
+        else if(gameLive && s6.value === false && twoPlayer && computerTurn) {
+            playerTwoInput(s6);
+            $('#s6 p').text(playerTwo);
+            if(winCheck() !== undefined) {
+                gameOver();
+                $('#win').text(winCheck());
+                $('#winDisp').removeClass('hidden');
             }
         }
     });
@@ -497,9 +594,19 @@ $(document).ready(function() {
             $('#s7 p').text(playerOne);
             computerPlayer();
             computerDisp();
-            if(winCheck() !== false) {
+            if(winCheck() !== undefined) {
                 gameOver();
                 $('#win').text(winCheck());
+                $('#winDisp').removeClass('hidden');
+            }
+        }
+        else if(gameLive && s7.value === false && twoPlayer && computerTurn) {
+            playerTwoInput(s7);
+            $('#s7 p').text(playerTwo);
+            if(winCheck() !== undefined) {
+                gameOver();
+                $('#win').text(winCheck());
+                $('#winDisp').removeClass('hidden');
             }
         }
     });
@@ -511,9 +618,19 @@ $(document).ready(function() {
             $('#s8 p').text(playerOne);
             computerPlayer();
             computerDisp();
-            if(winCheck() !== false) {
+            if(winCheck() !== undefined) {
                 gameOver();
                 $('#win').text(winCheck());
+                $('#winDisp').removeClass('hidden');
+            }
+        }
+        else if(gameLive && s8.value === false && twoPlayer && computerTurn) {
+            playerTwoInput(s8);
+            $('#s8 p').text(playerTwo);
+            if(winCheck() !== undefined) {
+                gameOver();
+                $('#win').text(winCheck());
+                $('#winDisp').removeClass('hidden');
             }
         }
     });
@@ -525,9 +642,19 @@ $(document).ready(function() {
             $('#s9 p').text(playerOne);
             computerPlayer();
             computerDisp();
-            if(winCheck() !== false) {
+            if(winCheck() !== undefined) {
                 gameOver();
                 $('#win').text(winCheck());
+                $('#winDisp').removeClass('hidden');
+            }
+        }
+        else if(gameLive && s9.value === false && twoPlayer && computerTurn) {
+            playerTwoInput(s9);
+            $('#s9 p').text(playerTwo);
+            if(winCheck() !== undefined) {
+                gameOver();
+                $('#win').text(winCheck());
+                $('#winDisp').removeClass('hidden');
             }
         }
     });

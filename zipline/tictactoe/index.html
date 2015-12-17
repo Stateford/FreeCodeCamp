@@ -32,7 +32,7 @@
                                 <option value='o'>O</option>
                             </select> <br />
                             <label class='hidden'>Number of Players:</label>
-                            <select class='players hidden'>
+                            <select class='players'>
                                 <option value="1">1 Player</option>
                                 <option value="2">2 Player</option>
                             </select> <br />
@@ -84,11 +84,18 @@
                             <p></p>
                         </div>
                     </div>
+                    
+                </div> <!--GAME BODY-->
                 
+                <div class='hidden' id='winDisp'>
+                    <div class='container'>
+                        <h1 id='win'>zzz</h1>
+                        <button type='button' id='playAgain'>Play Again</button>
+                    </div>
                 </div>
+                
                 <div class='win'>
-                    <h1 id='win'>zzz</h1>
-                    <h1 id='counterone'>0</h1>
+                    <h1>Win Counter:</h1><h1 id='counterone'>0</h1>
                     <h1 id='countertwo'>0</h1>
                 </div>
                 
