@@ -417,9 +417,15 @@ $(document).ready(function() {
         console.log('reset');
         $('#winDisp').addClass('hidden');
         if(gameLive) {
+            clearDisp();
             winCount = 0;
             resetGame();
+            computerDisp();
+        }
+        else if(!gameLive) {
             clearDisp();
+            resetGame();
+            computerDisp();
         }
     });
 
@@ -434,7 +440,9 @@ $(document).ready(function() {
     $('#playAgain').click(function() {
         if(gameLive === false) {
             $('#winDisp').addClass('hidden');
+            clearDisp();
             resetGame();
+            computerDisp();
         }
     });
     
