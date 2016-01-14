@@ -166,12 +166,6 @@ var playerTwoInput = function(arg) {
     }
 };
 
-//STARTGAME
-var startGame = function() {
-    gameLive = true;
-    computerTurn = true;
-    computerPlayer();
-};
 
 //RESET GAME
 var resetGame = function() {
@@ -189,10 +183,18 @@ var resetGame = function() {
     diag = [[],[]];
     playerOrder = [];
     computerOrder = [];
-    startGame();
+};
+
+//STARTGAME
+var startGame = function() {
+    gameLive = true;
+    computerTurn = true;
+    computerPlayer();
 };
 
 //WINCHECKER
+var winner = '';
+
 var winCheck = function() {
     var winArr = [horiz, vert, diag];
     console.log('wincheck');
@@ -203,12 +205,14 @@ var winCheck = function() {
                 if(winArr[i][str].toString() === 'x,x,x') {
                     gameOver();
                     winCount++;
+                    winner = 'Player One Wins';
                     return 'Player One Wins';
                     break;
                 }
                 else if(winArr[i][str].toString() === 'o,o,o') {
                     gameOver();
                     winCount = 0;
+                    winner = 'Player Two Wins';
                     return 'Player Two Wins';
                     break;
                 }
@@ -221,13 +225,15 @@ var winCheck = function() {
                 if(winArr[i][str].toString() === 'o,o,o') {
                     gameOver();
                     winCount++;
+                    winner = 'Player One Wins';
                     return 'Player One Wins';
                     break;
                 }
                 else if(winArr[i][str].toString() === 'x,x,x') {
                     gameOver();
                     winCount = 0;
-                    return 'Player Two Win';
+                    winner = 'Player Two Wins';
+                    return 'Player Two Wins';
                     break;
                 }
             }
@@ -397,7 +403,6 @@ $(document).ready(function() {
         for(var i = 0; i < array.length; i++) {
             $('#' + array[i] + ' p').text('');
         };
-        computerPlayer();
     };
     
 
@@ -420,11 +425,13 @@ $(document).ready(function() {
             clearDisp();
             winCount = 0;
             resetGame();
+            startGame();
             computerDisp();
         }
         else if(!gameLive) {
             clearDisp();
             resetGame();
+            startGame();
             computerDisp();
         }
     });
@@ -438,11 +445,13 @@ $(document).ready(function() {
 
     //PLAY AGAIN
     $('#playAgain').click(function() {
-        if(gameLive === false) {
+        if(!gameLive) {
             $('#winDisp').addClass('hidden');
             clearDisp();
             resetGame();
+            startGame();
             computerDisp();
+            console.log('playAgain');
         }
     });
     
@@ -456,7 +465,7 @@ $(document).ready(function() {
             computerDisp();
             if(winCheck() !== undefined) {
                 gameOver();
-                $('#win').text(winCheck());
+                $('#win').text(winner);
                 $('#winDisp').removeClass('hidden');
             }
         }
@@ -465,7 +474,7 @@ $(document).ready(function() {
             $('#s1 p').text(playerTwo);
             if(winCheck() !== undefined) {
                 gameOver();
-                $('#win').text(winCheck());
+                $('#win').text(winner);
                 $('#winDisp').removeClass('hidden');
             }
         }
@@ -480,7 +489,7 @@ $(document).ready(function() {
             computerDisp();
             if(winCheck() !== undefined) {
                 gameOver();
-                $('#win').text(winCheck());
+                $('#win').text(winner);
                 $('#winDisp').removeClass('hidden');
             }
         }
@@ -489,7 +498,7 @@ $(document).ready(function() {
             $('#s2 p').text(playerTwo);
             if(winCheck() !== undefined) {
                 gameOver();
-                $('#win').text(winCheck());
+                $('#win').text(winner);
                 $('#winDisp').removeClass('hidden');
             }
         }
@@ -504,7 +513,7 @@ $(document).ready(function() {
             computerDisp();
             if(winCheck() !== undefined) {
                 gameOver();
-                $('#win').text(winCheck());
+                $('#win').text(winner);
                 $('#winDisp').removeClass('hidden');
             }
         }
@@ -516,7 +525,7 @@ $(document).ready(function() {
                 $('#s3 p').text(playerTwo);
                 if(winCheck() !== undefined) {
                     gameOver();
-                    $('#win').text(winCheck());
+                    $('#win').text(winner);
                     $('#winDisp').removeClass('hidden');
                 }
             }
@@ -532,7 +541,7 @@ $(document).ready(function() {
             computerDisp();
             if(winCheck() !== undefined) {
                 gameOver();
-                $('#win').text(winCheck());
+                $('#win').text(winner);
                 $('#winDisp').removeClass('hidden')
             }
         }
@@ -541,7 +550,7 @@ $(document).ready(function() {
             $('#s4 p').text(playerTwo);
             if(winCheck() !== undefined) {
                 gameOver();
-                $('#win').text(winCheck());
+                $('#win').text(winner);
                 $('#winDisp').removeClass('hidden');
             }
         }
@@ -556,7 +565,7 @@ $(document).ready(function() {
             computerDisp();
             if(winCheck() !== undefined) {
                 gameOver();
-                $('#win').text(winCheck());
+                $('#win').text(winner);
                 $('#winDIsp').removeClass('hidden');
             }
         }
@@ -565,7 +574,7 @@ $(document).ready(function() {
             $('#s5 p').text(playerTwo);
             if(winCheck() !== undefined) {
                 gameOver();
-                $('#win').text(winCheck());
+                $('#win').text(winner);
                 $('#winDisp').removeClass('hidden');
             }
         }
@@ -580,7 +589,7 @@ $(document).ready(function() {
             computerDisp();
             if(winCheck() !== undefined) {
                 gameOver();
-                $('#win').text(winCheck());
+                $('#win').text(winner);
                 $('#winDisp').removeClass('hidden');
             }
         }
@@ -589,7 +598,7 @@ $(document).ready(function() {
             $('#s6 p').text(playerTwo);
             if(winCheck() !== undefined) {
                 gameOver();
-                $('#win').text(winCheck());
+                $('#win').text(winner);
                 $('#winDisp').removeClass('hidden');
             }
         }
@@ -604,7 +613,7 @@ $(document).ready(function() {
             computerDisp();
             if(winCheck() !== undefined) {
                 gameOver();
-                $('#win').text(winCheck());
+                $('#win').text(winner);
                 $('#winDisp').removeClass('hidden');
             }
         }
@@ -613,7 +622,7 @@ $(document).ready(function() {
             $('#s7 p').text(playerTwo);
             if(winCheck() !== undefined) {
                 gameOver();
-                $('#win').text(winCheck());
+                $('#win').text(winner);
                 $('#winDisp').removeClass('hidden');
             }
         }
@@ -628,7 +637,7 @@ $(document).ready(function() {
             computerDisp();
             if(winCheck() !== undefined) {
                 gameOver();
-                $('#win').text(winCheck());
+                $('#win').text(winner);
                 $('#winDisp').removeClass('hidden');
             }
         }
@@ -637,7 +646,7 @@ $(document).ready(function() {
             $('#s8 p').text(playerTwo);
             if(winCheck() !== undefined) {
                 gameOver();
-                $('#win').text(winCheck());
+                $('#win').text(winner);
                 $('#winDisp').removeClass('hidden');
             }
         }
@@ -652,7 +661,7 @@ $(document).ready(function() {
             computerDisp();
             if(winCheck() !== undefined) {
                 gameOver();
-                $('#win').text(winCheck());
+                $('#win').text(winner);
                 $('#winDisp').removeClass('hidden');
             }
         }
@@ -661,7 +670,7 @@ $(document).ready(function() {
             $('#s9 p').text(playerTwo);
             if(winCheck() !== undefined) {
                 gameOver();
-                $('#win').text(winCheck());
+                $('#win').text(winner);
                 $('#winDisp').removeClass('hidden');
             }
         }
