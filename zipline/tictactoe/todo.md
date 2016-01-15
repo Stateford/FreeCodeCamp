@@ -14,8 +14,6 @@ TO DO
 ## OTHER
 * Add a twoplayer option
 * Fix WinDisplay
-* Style WinDisplay
-* Add wincheck for tie
 
 ## CURRENT
 * add third round move to use random corner

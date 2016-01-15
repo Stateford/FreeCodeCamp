@@ -211,7 +211,6 @@ var winCheck = function() {
                 }
                 else if(winArr[i][str].toString() === 'o,o,o') {
                     gameOver();
-                    winCount = 0;
                     winner = 'Player Two Wins';
                     return 'Player Two Wins';
                     break;
@@ -231,13 +230,17 @@ var winCheck = function() {
                 }
                 else if(winArr[i][str].toString() === 'x,x,x') {
                     gameOver();
-                    winCount = 0;
                     winner = 'Player Two Wins';
                     return 'Player Two Wins';
                     break;
                 }
             }
         }
+    }
+    else if(turnCount === 9) {
+        gameOver();
+        winner = 'The Game is a Tie';
+        return 'The Game is a Tie';
     }
 };
 

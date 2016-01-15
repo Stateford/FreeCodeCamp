@@ -95,11 +95,21 @@ body {
 
 /*WINDISP*/
 #winDisp {
-    width: 200px;
+    width: 400px;
+    position: absolute;
+    background-color: #fffffb;
+    border: 1px solid #4a4ad4;
+    box-shadow: 1px 1px;
+    left: 200px;
+    top: 150px;
+    padding: 20px;
+    text-align: center;
 }
 
-.container {
-    margin: 0 auto;
+#playAgain {
+    float: right;
+    background-color: aliceblue;
+    padding: 2px 5px;
 }
 
 
