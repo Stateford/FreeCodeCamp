@@ -1,0 +1,65 @@
+/*OVERALL*/
+html {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    background-color: darkblue;
+    width: 100%;
+    margin: 0;
+}
+
+/*RANDOM*/
+
+#random {
+    color: white;
+    text-decoration: none;
+    font-size: 1.6em;
+    display: inline;
+    margin-left: 80px;
+}
+
+/*SEARCH FIELD*/
+#search {
+    border-radius: 20px;
+    border: 6px solid #e29304;
+    padding: 0 10px;
+    padding-bottom: 5px;
+    font-size: 1.6em;
+    width: 200px;
+    background-color: darkblue;
+    color: white;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+/*CENTER*/
+.wrapper {
+    width: 100%;
+    height: 100%;
+}
+
+.container {
+    width: 250px;
+    margin: 0 auto;
+    margin-top: 200px;
+}
+
+/*BUTTONS*/
+.buttons {
+    display: inline;
+    margin-left: 100px;
+}
+
+#submitbtn {
+    border-radius: 100px;
+    background-color: white;
+    color: darkblue;
+}
+
+#resetbtn {
+    border-radius: 100px;
+    background-color: white;
+    color: darkblue;
+}

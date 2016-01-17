@@ -145,6 +145,7 @@ var input = function(arg1, arg2) {
     }
     arg1.value = true;
     turnCount++;
+    console.log(turnCount);
 };
 
 //PLAYER INPUT
@@ -165,7 +166,6 @@ var playerTwoInput = function(arg) {
         playerTurn = true;
     }
 };
-
 
 //RESET GAME
 var resetGame = function() {
@@ -215,6 +215,11 @@ var winCheck = function() {
                     return 'Player Two Wins';
                     break;
                 }
+                else if(turnCount === 9) {
+                    gameOver();
+                    winner = 'The Game is a Tie';
+                    return 'The Game is a Tie';
+                }
             }
         }
     }
@@ -233,6 +238,11 @@ var winCheck = function() {
                     winner = 'Player Two Wins';
                     return 'Player Two Wins';
                     break;
+                }
+                else if(turnCount === 9) {
+                    gameOver();
+                    winner = 'The Game is a Tie';
+                    return 'The Game is a Tie';
                 }
             }
         }
@@ -255,6 +265,7 @@ var gameOver = function() {
     playerOrder = [];
     computerOrder = [];
     turnCount = 0;
+    console.log("End Game")
 };
 
 //AI
@@ -393,7 +404,10 @@ var playerNum = function(arg) {
     }
 };
 
-//JQUERY
+/*
+JQUERY
+*/
+
 $(document).ready(function() {
 
     //DISPLAY
@@ -412,17 +426,21 @@ $(document).ready(function() {
     //START BUTTON
 
     $('.start').click(function() {
+        if(!gameLive) {
         console.log('startgame');
         playerNum($('.players').val());
         playerID($('#playerid').val());
         startGame();
         computerDisp();
         $('#winDisp').addClass('hidden');
+        }
     });
 
     //RESET BUTTON
     $('.reset').click(function() {
         console.log('reset');
+        playerID($('#playerid').val());
+        playerNum($('.players').val());
         $('#winDisp').addClass('hidden');
         if(gameLive) {
             clearDisp();
