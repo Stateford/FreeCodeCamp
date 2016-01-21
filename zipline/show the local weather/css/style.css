@@ -1,4 +1,9 @@
 /*OVERALL*/
+html {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
 
 /*BACKGROUND IMAGE*/
 
@@ -7,5 +12,82 @@ body {
     background-image: url('http://www.goodfreephotos.com/albums/places/wisconsin/mirror-lake-state-park/wisconsin-mirror-lake-state-park-lake-reflection-and-landscape.jpg');
     background-size: cover;
     background-repeat: no-repeat;
+    height: 100%;
+    padding: 0;
+}
+
+/*NAV*/
+.navbar {
+    background-color: rgba(0, 0, 0, 0.29);
+    height: 50px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.21);
+    position: relative;
+    width: 100%;
+}
+
+.logo {
+/*    width: 200px;*/
+    display: inline;
+}
+
+.navbar h1 {
+    color: #114658;
+    margin: 0;
+    margin-left: 10px;
+    padding: 12px 0px;
+    display: inline-block;
+}
+.nav-tab {
+    display: inline;
+    margin: 0;
+    padding: 0;
+    float: right;
+    height: 50px;
+    width: 200px;
+    margin-right: 50px;
+}
+
+.nav-tab li {
+    display: inline;
+    text-decoration: none;
+    padding: 15px 10px;
+    margin: 0;
+}
+
+.nav-tab a {
+    display: inline;
+    text-align: center;
+    padding: 0;
+    text-decoration: none;
+    margin: 0;
+}
+
+    /*NAV ACTIVES*/
+.nav-tab li:hover {
+    background-color: rgba(0, 0, 0, .2);
+}
+
+/*MAIN BODY*/
+.mainbody {
+    width: 100%;
+}
+
+/*WEATHER APP*/
+.weatherapp {
+    width: 300px;
+    margin: auto;
+    margin-top: 20px;
+    text-align: center;
+    background-color: rgba(0, 0, 0, .3);
+    padding: 30px 0;
+}
+
+h1, h2, h3, h4, h5 {
+    margin: 0;
+    padding: 0;
+}
+
+.weatherapp h3, h4 {
+    display: inline;
 }
 

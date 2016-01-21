@@ -4,65 +4,51 @@
         <meta charset="utf-8">
         <title>Local Weather</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <link type="text/css" rel='stylesheet' href='css/bootstrap.min.css'>
-        <link type="text/css" rel='stylesheet' href='css/bootstrap-theme.min.css'>
         <link type="text/css" rel='stylesheet' href='css/style.css'>
-        <script src='js/bootstrap.min.js'></script>
         <script src='js/javascript.js'></script>
     </head>
     <body>
         <div class='wrap'>
 
             <!--NAVIGATION-->
-                <nav class="navbar navbar-inverse" role="navigation">
-                    <div class='container-fluid'>
-                    <!-- Brand and toggle get grouped for better mobile display -->
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                                <span class="sr-only">Toggle navigation</span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                            <a class="navbar-brand" href="#">Local Weather</a>
-                        </div>
-
-                        <!-- Collect the nav links, forms, and other content for toggling -->
-                        <div class="collapse navbar-collapse navbar-ex1-collapse">
-                            <form class="navbar-form navbar-left" role="search">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Zipcode">
-                                </div>
-                                <button type="submit" class="btn btn-default">Submit</button>
-                            </form>
-                            <ul class="nav navbar-nav navbar-right">
-                                <li><a href="#" id='imperial'>Farenheit</a></li>
-                                <li><a href="#" id='si'>Celcius</a></li>
-                            </ul>
-                        </div><!-- /.navbar-collapse -->
+            <div class="navbar" role="navigation">
+                    <div class='logo'>
+                        <h1>Local Weather</h1>
                     </div>
-                </nav>
+                    
+                    <div class='nav-tab'>
+                        <ul>
+                            <li><a href='#' id='farenheit'>Farenheit</a></li>
+                            <li><a href='#' id='celcius'>Celcius</a></li>
+                        </ul>
+                    </div>
+            </div>
                 
-                <div class='mainbody'>
-                    <div class='container'>
-                        
+            
+            <!--MAIN BODY-->
+            <div class='mainbody'>
+                <div class='container'>
+                    <div class='weatherapp'>
                         <div class='row'>
-                            <div class='col-md-2'>
-                                <h1>Currently:</h1>
-                            </div>
-                            <div class='col-md-2'>
-                                <h1>64(degrees)</h1>
-                            </div>
+                            <h5 id='date'>01.01.2016</h5>
                         </div>
-                        
                         <div class='row'>
-                            <div class='col-md-12'>
-                                
-                            </div>
+                            <h4 id='location'>CITY, STATE</h4>
                         </div>
-                        
+                        <div class='row'>
+                            <h1 id='currenttemp'>52 &#8226;</h1>
+                        </div>
+                        <div class='row'>
+                            <h4>LOW</h4>
+                            <h4>HIGH</h4>
+                        </div>
+                        <div class='row'>
+                            <h3 id='low'>1 &#8226;</h3>
+                            <h3 id='high'>2 &#8226;</h3>
+                        </div>
                     </div>
                 </div>
+            </div>
                 
         </div>   <!--WRAP END-->
     </body>
