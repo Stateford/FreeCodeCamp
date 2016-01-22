@@ -20,21 +20,45 @@ var getByZip = function(arg) {
 var toFarenheit = function(num) {
     console.log('toFarenheit');
     var final = ((num * (9/5)) - 459.67);
-    return final;
+    return final.toFixed(0);
 };
 
 //CONVERT TO CELCIUS
 var toCelcius = function(num) {
     console.log('toCelcius');
     var final = (num - 273.15);
-    return final;
+    return final.toFixed(0);
 };
+
+//CURRENTDATE
+var today = new Date();
+var todaydate = (today.getMonth()+1) + '.' 
+                + today.getDate() + '.' 
+                + today.getFullYear();
 
 // JQUERY
 $(document).ready(function() {
     
+    //VARS
     var kelvin;
-    //GEO LOCATION
+    var kelvinLow;
+    var kelvinHigh;
+    
+    //INFO UPDATE
+        // IMPERIAL
+    var farenheit = function() {
+        $('#temp').text(toFarenheit(kelvin) + '℉');
+        $('#low').text(toFarenheit(kelvinLow) + '℉');
+        $('#high').text(toFarenheit(kelvinHigh) + '℉');
+    };
+        //SI
+    var celcius = function() {
+        $('#temp').text(toCelcius(kelvin) + '℃');
+        $('#low').text(toCelcius(kelvinLow) + '℃');
+        $('#high').text(toCelcius(kelvinHigh) + '℃');
+    }
+    
+    //GEOLOCATION
     if (navigator.geolocation) {
 
         navigator.geolocation.getCurrentPosition(function(position) {
@@ -44,9 +68,26 @@ $(document).ready(function() {
             $.getJSON(geo, function(data) {
                 console.log('getting JSON');
                 kelvin = data.main.temp;
-                $('#city').text(data.name);
-                $('#temp').text('Currently: ' + toFarenheit(kelvin) + ' &#8457;');
+                kelvinLow = data.main.temp_min;
+                kelvinHigh = data.main.temp_max;
+                
+                $('#date').text(todaydate);
+                $('#icon').attr('src', 'http://openweathermap.org/img/w/' + data.weather[0].icon + '.png');
+                $('#icon').removeClass('hidden');
+                $('#description').text(data.weather[0].description);
+                $('#location').text(data.name + ', ' + data.sys.country);
+                farenheit();
             })
         });
     };
+    
+    //BUTTONS
+    $('#farenheit').click(function() {
+        farenheit();
+    })
+    
+    $('#celcius').click(function() {
+        celcius();
+    })
+    
 });
