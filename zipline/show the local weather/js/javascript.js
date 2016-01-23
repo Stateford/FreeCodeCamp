@@ -4,7 +4,7 @@ var getByZip = function(arg) {
     var regex = /\D/g;
     var zip = arg.replace(regex, '');
     console.log('zipcode: ' + zip);
-    
+
     if(arg.match(/[^$,.\d]/)) {
         return false;
     }
@@ -32,18 +32,18 @@ var toCelcius = function(num) {
 
 //CURRENTDATE
 var today = new Date();
-var todaydate = (today.getMonth()+1) + '.' 
-                + today.getDate() + '.' 
+var todaydate = (today.getMonth()+1) + '.'
+                + today.getDate() + '.'
                 + today.getFullYear();
 
 // JQUERY
 $(document).ready(function() {
-    
+
     //VARS
     var kelvin;
     var kelvinLow;
     var kelvinHigh;
-    
+
     //INFO UPDATE
         // IMPERIAL
     var farenheit = function() {
@@ -57,7 +57,7 @@ $(document).ready(function() {
         $('#low').text(toCelcius(kelvinLow) + '℃');
         $('#high').text(toCelcius(kelvinHigh) + '℃');
     }
-    
+
     //GEOLOCATION
     if (navigator.geolocation) {
 
@@ -70,7 +70,7 @@ $(document).ready(function() {
                 kelvin = data.main.temp;
                 kelvinLow = data.main.temp_min;
                 kelvinHigh = data.main.temp_max;
-                
+
                 $('#date').text(todaydate);
                 $('#icon').attr('src', 'http://openweathermap.org/img/w/' + data.weather[0].icon + '.png');
                 $('#icon').removeClass('hidden');
@@ -80,14 +80,13 @@ $(document).ready(function() {
             })
         });
     };
-    
+
     //BUTTONS
     $('#farenheit').click(function() {
         farenheit();
-    })
-    
+    });
+
     $('#celcius').click(function() {
         celcius();
-    })
-    
+    });
 });
