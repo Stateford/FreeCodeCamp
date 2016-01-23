@@ -1,43 +1,51 @@
-/*OVERALL*/
-
 body {
     margin: 0;
-    background-color: brown;
 }
-
-.container {
-    width: 100%;
-    margin: 0;
-}
-
-/*BODY*/
 
 .twitchapp {
+    margin-top: 20px;
     width: 300px;
-    margin: 0 auto;
-    border: 3px solid black;
-    background-color: antiquewhite;
+/*    margin: 0 auto;*/
 }
 
-.r {
-    margin: 5px 10px;
-    border: 2px solid black;
-    background-color: azure;
-    height: 50px;
+/*TABS*/
+.tabs {
+    padding-top: 5px;
+    height: 30px;
+    text-align: center;
+    background-color: #181a1f;
 }
 
-.profileimg {
-    
+.tabs div {
+    border-top: 5px solid #595a5f;
+    padding-bottom: 10px;
+    padding-right: 23px;
+    padding-left: 22px;
+    border-left: 1px solid white;
 }
 
-.username {
-    
+.tabs div:nth-child(1) {
+    border-left: none;
 }
 
-.usercount {
-    
+.tabs p {
+    margin-top: 10px;
 }
 
-.live {
-    
+.tabs div, .tabs p {
+    text-align: center;
+    display: inline;
+    color: white;
+}
+
+.bar {
+    width: 100%;
+    height: 5px;
+    display: block;
+    background-color: #3d414b;
+}
+
+/*MAIN BODY*/
+.mainbody {
+    background-color: #595a5f;
 }
