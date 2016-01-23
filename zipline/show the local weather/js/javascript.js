@@ -83,10 +83,14 @@ $(document).ready(function() {
 
     //BUTTONS
     $('#farenheit').click(function() {
+        $('#celcius').removeClass('active');
+        $('#farenheit').addClass('active');
         farenheit();
     });
 
     $('#celcius').click(function() {
+        $('#farenheit').removeClass('active');
+        $('#celcius').addClass('active');
         celcius();
     });
 });
