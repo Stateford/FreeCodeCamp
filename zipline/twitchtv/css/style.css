@@ -45,7 +45,87 @@ body {
     background-color: #3d414b;
 }
 
+.online:hover {
+    cursor: pointer;
+}
+
+.offline:hover {
+    cursor: pointer;
+}
+
+.all:hover {
+    cursor: pointer;
+}
+
+.active {
+    background-color: #3d414b;
+}
+
 /*MAIN BODY*/
 .mainbody {
     background-color: #595a5f;
+}
+
+.block {
+    height: 60px;
+    background-color: #181a1f;
+    box-shadow: inset 4px 0px #3d414b;
+}
+
+.profilepic {
+    float: left;
+    margin-top: 4px;
+    margin-left: 10px;
+    height: 50px;
+    border: 2px solid #3d414b;
+    display: inline;
+}
+
+.content {
+    display: inline-block;
+    width: 100%;
+}
+
+
+/*DESCRIPTION*/
+
+.description {
+    display: inline-block;
+    margin-left: 5px;
+}
+
+.username {
+    display: inline-block;
+    color: white;
+    vertical-align: top;
+    margin-top: 2px;
+    margin-right: 5px;
+    margin-bottom: 0px;
+    float: left;
+}
+
+.title {
+    color: white;
+    margin: 0;
+    font-size: 12px;
+}
+
+.game {
+    color: white;
+    float: left;
+    margin: 0;
+}
+
+.usercount {
+    display: inline-block;
+    color: white;
+    float: right;
+    margin-right: 10px;
+}
+
+.livestatus {
+    display: inline-block;
+    color: white;
+    margin: 0;
+    float: inherit;
 }
