@@ -40,10 +40,10 @@
                     </div>
                     <div class="bar"></div>
                     <div class="block" ng-controller="MainController">
-                        <div class="content" ng-show="item in streams">
+                        <div class="content" ng-repeat="item in username">
                             <img ng-src="{{ streams.stream.channel.logo }}" class="profilepic">
                             <div class="description">
-                                <p class="username">{{ streams.stream.channel.display_name }}</p>
+                                <p class="username">{{ username.item.channel.display_name }}</p>
                                 <p class="title">{{ streams.stream.channel.status }}</p>
                                 <p class="game">{{ streams.stream.game }}</p>
                             </div>
