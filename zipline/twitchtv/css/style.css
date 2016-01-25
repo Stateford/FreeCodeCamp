@@ -17,7 +17,6 @@ body {
 }
 
 .tabs div {
-    border-top: 5px solid #595a5f;
     padding-bottom: 10px;
     padding-right: 23px;
     padding-left: 22px;
@@ -45,16 +44,23 @@ body {
     background-color: #3d414b;
 }
 
+.online {
+    border-top: 5px solid green;
+}
+
 .online:hover {
     cursor: pointer;
+    border-top: 5px solid green;
 }
 
 .offline:hover {
     cursor: pointer;
+    border-top: 5px solid red;
 }
 
 .all:hover {
     cursor: pointer;
+    border-top: 5px solid blue;
 }
 
 .active {

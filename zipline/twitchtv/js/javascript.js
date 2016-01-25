@@ -1,10 +1,4 @@
 //STREAM LIST
-var streamList = ['arteezy', 'eternalenvy', 'feardarkness', 'd3xt3r'];
-
-
-$.getJSON('https://api.twitch.tv/kraken/streams/freecodecamp?callback=?', function(data) {
-  console.log(data);
-});
 
 $(document).ready(function() {
     
@@ -13,6 +7,9 @@ $(document).ready(function() {
         $('.offline').removeClass('active');
         $('.all').removeClass('active');
         $('.online').addClass('active');
+        $('.online').css('border-top', "5px solid green");
+        $('.offline').css('border-top', "none");
+        $('.all').css('border-top', "none");
     });
     
     
@@ -21,12 +18,18 @@ $(document).ready(function() {
         $('.offline').addClass('active');
         $('.online').removeClass('active');
         $('.all').removeClass('active');
+        $('.offline').css("border-top", "5px solid red");
+        $('.online').css("border-top", "none");
+        $('.all').css("border-top", "none");
     });
     
     //ALL TAB
     $('.all').click(function() {
         $('.offline').removeClass('active');
         $('.all').addClass('active');
-        $('online').removeClass('active');
+        $('.online').removeClass('active');
+        $('.all').css('border-top', '5px solid blue');
+        $('.online').css('border-top', 'none');
+        $('.offline').css('border-top', 'none');
     });
 });
