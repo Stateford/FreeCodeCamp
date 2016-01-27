@@ -125,13 +125,11 @@ body {
 .usercount {
     display: inline-block;
     color: white;
-    float: right;
     margin-right: 10px;
+    float: right;
 }
 
-.livestatus {
-    display: inline-block;
-    color: white;
-    margin: 0;
-    float: inherit;
+.block:hover {
+    cursor: pointer;
+    background-color: #2a2e38;
 }

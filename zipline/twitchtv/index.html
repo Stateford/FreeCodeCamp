@@ -25,33 +25,22 @@
                     </div>
                 </div>
                 <div class="bar"></div>
-                <div class="mainbody">
-                    <div class="block">
+                <div class="mainbody" ng-controller="MainController">
+                    <div class="bar"></div>
+                    <div class="block" ng-repeat="item in online">
+                        <a ng-href="{{ item.stream.channel.url }}">
                         <div class="content">
-                            <img src="res/Ran_Mouri_Profile.jpg" class="profilepic">
+                            <img ng-src="{{ item.stream.channel.logo }}" class="profilepic">
                             <div class="description">
-                                <p class="username">IDIETMORAN</p>
-                                <p class="title">The Worst Ever</p>
-                                <p class="game">OSU!</p>
+                                <p class="username">{{ item.stream.channel.display_name | uppercase }}</p>
+                                <p class="title">{{ item.stream.channel.status | limitTo:14 }}</p>
+                                <p class="game">{{ item.stream.game }}</p>
                             </div>
-                            <p class="livestatus">LIVE</p>
-                            <h3 class="usercount">2,000</h3>
+                            <h3 class="usercount">{{ item.stream.viewers }}</h3>
                         </div>
+                        <div class="bar"></div>
+                        </a>
                     </div>
-                    <div class="bar"></div>
-                    <div class="block" ng-controller="MainController">
-                        <div class="content" ng-repeat="item in username">
-                            <img ng-src="{{ streams.stream.channel.logo }}" class="profilepic">
-                            <div class="description">
-                                <p class="username">{{ username.item.channel.display_name }}</p>
-                                <p class="title">{{ streams.stream.channel.status }}</p>
-                                <p class="game">{{ streams.stream.game }}</p>
-                            </div>
-<!--                            <p class="livestatus">LIVE</p>-->
-                            <h3 class="usercount">{{ streams.stream.viewers }}</h3>
-                        </div>
-                    </div>
-                    <div class="bar"></div>
                 </div>
             </div>
             
