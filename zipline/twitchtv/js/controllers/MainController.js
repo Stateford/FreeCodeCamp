@@ -7,17 +7,26 @@ app.controller('MainController', function($scope, $http) {
 //        {blackdotatv: $http.get("https://api.twitch.tv/kraken/streams/blackdotatv") },
 //    ];
     
+    var usernames = ['arteezy', 'feardarkness', 'cerebralwallsy', 'summit1g', 'pianoimproman'];
     
-    $scope.test = [];
+    $scope.online = [];
+    $scope.offline = [];
+    $scope.all = [];
     
     for(var i = 0; i < usernames.length; i++) {
         var current = usernames[i];
         $http.get("https://api.twitch.tv/kraken/streams/" + current)
         .success(function(data) {
             if(data.stream !== null) {
-            $scope.test.push(data);
-            console.log(data);
+            $scope.online.push(data);
             }
+            else if(data.stream === null) {
+                $scope.offline.push(data);
+            }
+            $scope.all.push(data);
+        })
+        .error(function(data) {
+            console.log('got nothing');
         })
     }
     console.log($scope.test);

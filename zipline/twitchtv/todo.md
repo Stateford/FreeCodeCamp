@@ -15,6 +15,7 @@
 ## TO DO
 * Build site
 * put into angular directives
+* create routing
 
 ## LIBARIES
 * jQuery
