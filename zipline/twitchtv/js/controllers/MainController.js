@@ -1,11 +1,5 @@
-app.controller('MainController', function($scope, $http) {
-    
-//    $scope.username = [
-//        {arteezy: $http.get("https://api.twitch.tv/kraken/streams/arteezy") },
-//        {cerebralwallsy: $http.get("https://api.twitch.tv/kraken/streams/cerebralwallsy") },
-//        {feardarkness: $http.get("https://api.twitch.tv/kraken/streams/feardarkness") },
-//        {blackdotatv: $http.get("https://api.twitch.tv/kraken/streams/blackdotatv") },
-//    ];
+app.controller('MainController', function($scope, $http, $routeParams) {
+
     
     var usernames = ['arteezy', 'feardarkness', 'cerebralwallsy', 'summit1g', 'pianoimproman'];
     

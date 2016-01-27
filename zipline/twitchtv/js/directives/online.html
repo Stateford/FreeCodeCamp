@@ -1,0 +1,17 @@
+<div class="mainbody" ng-controller="MainController">
+    <div class="bar"></div>
+    <div class="block" ng-repeat="item in online">
+        <a ng-href="{{ item.stream.channel.url }}">
+        <div class="content">
+            <img ng-src="{{ item.stream.channel.logo }}" class="profilepic">
+            <div class="description">
+                <p class="username">{{ item.stream.channel.display_name | uppercase }}</p>
+                <p class="title">{{ item.stream.channel.status | limitTo:14 }}</p>
+                <p class="game">{{ item.stream.game }}</p>
+            </div>
+            <h3 class="usercount">{{ item.stream.viewers }}</h3>
+        </div>
+        <div class="bar"></div>
+        </a>
+    </div>
+</div>
