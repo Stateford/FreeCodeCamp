@@ -1,10 +1,11 @@
 app.controller('MainController', function($scope, $http) {
 
     
-    var usernames = ['arteezy', 'feardarkness', 'cerebralwallsy', 'summit1g', 'pianoimproman', 'wagamamatv', "monstercat"];
+    var usernames = ['arteezy', 'feardarkness', 'cerebralwallsy', 'summit1g', 'pianoimproman', 'wagamamatv', "monstercat", "blackdotatv"];
     
     $scope.online = [];
     $scope.offline = [];
+    $scope.offlinedata = [];
     $scope.all = [];
     
     for(var i = 0; i < usernames.length; i++) {
@@ -12,10 +13,12 @@ app.controller('MainController', function($scope, $http) {
         $http.get("https://api.twitch.tv/kraken/streams/" + current)
         .success(function(data) {
             if(data.stream !== null) {
-            $scope.online.push(data);
+                console.log(data.stream);
+                $scope.online.push(data);
             }
-            else if(data.stream === null) {
-                $scope.offline.push(data);
+            else if(data.stream === undefined || data.stream === null) {
+                var test = data.self;
+                $scope.offline.push(data._links);
             }
             $scope.all.push(data);
         })
@@ -23,14 +26,4 @@ app.controller('MainController', function($scope, $http) {
             console.log('got nothing');
         })
     }
-    console.log($scope.test);
-    $scope.streams = {};
-    $http.get("https://api.twitch.tv/kraken/streams/blackdotatv")
-    .success(function(data) {
-        $scope.streams = data;
-    })
-    .error(function(data) {
-        console.log('got nothing');
-    });
-    
 });

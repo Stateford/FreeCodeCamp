@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="CamperNews">
     <head>
         <meta charset="utf-8">
         <title>Camper News</title>
@@ -8,16 +8,28 @@
         <link type="text/css" rel="stylesheet" href="css/style.css">
         <script src="js/javascript.js"></script>
     </head>
-    <body>
+    <body ng-controller="NewsCtrl">
         <div class="wrapper">
         
+            <div class="logo">
+                <h1>FreeCodeCamp</h1>
+                <h4>Camper News</h4>
+            </div>
             
+            <div class="main">
+                    <div class="card" ng-repeat="items in news">
+                        <img ng-src="{{ items.image }}">
+                        <p>{{ items.headline }}</p>
+                        <p>{{ items.timePosted | date }}</p>
+                        <p>{{ items.author.username }}</p>
+                    </div>
+            </div>
             
         </div>  <!--END WRAP-->
         
         <!--APP-->
         <script src="js/app.js"></script>
         <!--CONTROLLER-->
-        <script src="js/controller/MainController.js"></script>
+        <script src="js/controller/NewsCtrl.js"></script>
     </body>
 </html>

@@ -1,0 +1,47 @@
+body {
+    margin: 0;
+}
+
+/*LOGO*/
+.logo {
+    margin: 0;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.logo h4, .logo h1 {
+    margin: 0;
+}
+
+/*MAIN BODY*/
+.main {
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+/*CARDS*/
+.card {
+    margin-left: 20px;
+    margin-bottom: 20px;
+    width: 250px;
+    min-height: 250px;
+    padding-top: 10px;
+    padding-bottom: 15px;
+    box-shadow: 1px 1px 1px black;
+    background-color: #efefef;
+    text-align: center;
+    display: inline-block;
+}
+
+.card img {
+    width: 150px;
+    height: 100px;
+    margin-top: 20px;
+    display: inline-block;
+}
+
+.card p {
+    margin: 0;
+    margin-top: 10px;
+}

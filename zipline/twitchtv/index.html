@@ -14,32 +14,17 @@
             <div class="twitchapp">
                 <div class='tabs'>
                     <div class='online active'>
-                        <a href="#online" class="nav-tabs">ONLINE</a>
+                        <a ng-href="#online" class="nav-tabs">ONLINE</a>
                     </div>
                     <div class='offline'>
-                        <a href="#offline" class="nav-tabs">OFFLINE</a>
+                        <a ng-href="#offline" class="nav-tabs">OFFLINE</a>
                     </div>
                     <div class='all'>
-                        <a href="#all" class="nav-tabs">ALL</a>
+                        <a ng-href="#all" class="nav-tabs">ALL</a>
                     </div>
                 </div>
                 <div class="bar"></div>
-                <div class="mainbody" id="main">
-                    <div class="bar"></div>
-                    <div class="block" ng-repeat="item in online">
-                        <a ng-href="{{ item.stream.channel.url }}">
-                        <div class="content">
-                            <img ng-src="{{ item.stream.channel.logo }}" class="profilepic">
-                            <div class="description">
-                                <p class="username">{{ item.stream.channel.display_name | uppercase }}</p>
-                                <p class="title">{{ item.stream.channel.status | limitTo:14 }}</p>
-                                <p class="game">{{ item.stream.game }}</p>
-                            </div>
-                            <h3 class="usercount">{{ item.stream.viewers }}</h3>
-                        </div>
-                        <div class="bar"></div>
-                        </a>
-                    </div>
+
                     <div ng-view></div>
                 </div>
             </div>
