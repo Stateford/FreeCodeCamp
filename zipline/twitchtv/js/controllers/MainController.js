@@ -1,7 +1,7 @@
-app.controller('MainController', function($scope, $http, $routeParams) {
+app.controller('MainController', function($scope, $http) {
 
     
-    var usernames = ['arteezy', 'feardarkness', 'cerebralwallsy', 'summit1g', 'pianoimproman'];
+    var usernames = ['arteezy', 'feardarkness', 'cerebralwallsy', 'summit1g', 'pianoimproman', 'wagamamatv', "monstercat"];
     
     $scope.online = [];
     $scope.offline = [];

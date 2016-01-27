@@ -18,6 +18,12 @@ a:visited {
     text-decoration: none;
 }
 
+.nav-tabs {
+    display: inline;
+    padding-top: 5px;
+    padding-bottom: 10px;
+}
+
 /*TABS*/
 .tabs {
     padding-top: 5px;
@@ -27,6 +33,7 @@ a:visited {
 }
 
 .tabs div {
+    display: inline;
     padding-bottom: 10px;
     padding-right: 23px;
     padding-left: 22px;
@@ -37,11 +44,11 @@ a:visited {
     border-left: none;
 }
 
-.tabs p {
+.tabs a {
     margin-top: 10px;
 }
 
-.tabs div, .tabs p {
+.tabs div, .tabs a {
     text-align: center;
     display: inline;
     color: white;

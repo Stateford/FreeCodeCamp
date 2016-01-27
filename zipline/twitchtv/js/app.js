@@ -1,18 +1,18 @@
 var app = angular.module('TwitchTV', ['ngRoute'])
-.config(['$routeProvider', '$locationProvider',
-        function($routeProvider, $locationProvider) {
+.config(['$routeProvider',
+        function($routeProvider) {
             $routeProvider
-                .when('/online/', {
-                templateUrl: 'directives/online.html',
-                controller: 'MainController'
+                .when('/', {
+                controller: 'MainController',
+                templateUrl: 'views/online.html',
             })
-                .when('/offline/', {
-                templateUrl: 'directives/offline.html',
-                controller: 'MainController'
+                .when('/offline', {
+                controller: 'MainController',
+                templateUrl: 'views/offline.html',
             })
-                .when('/all/', {
-                templateUrl: 'directives/all.html',
-                controller: 'MainController'
+                .when('/all', {
+                controller: 'MainController',
+                templateUrl: 'views/all.html',
             })
                 .otherwise({
                 redirectTo: '/'

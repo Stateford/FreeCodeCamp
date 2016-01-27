@@ -1,5 +1,5 @@
 <!DOCTYPE html> 
-<html lang="en">
+<html lang="en" ng-app="TwitchTV">
     <head>
         <meta charset="utf-8">
         <title>TwitchTV</title>
@@ -9,22 +9,22 @@
         <link type="text/css" rel="stylesheet" href="css/style.css">
         <script src="js/javascript.js"></script>
     </head>
-    <body ng-app="TwitchTV">
+    <body ng-controller="MainController">
         <div class="wrapper">
             <div class="twitchapp">
                 <div class='tabs'>
                     <div class='online active'>
-                        <a href="online">ONLINE</a>
+                        <a href="#online" class="nav-tabs">ONLINE</a>
                     </div>
                     <div class='offline'>
-                        <a href="offline">OFFLINE</a>
+                        <a href="#offline" class="nav-tabs">OFFLINE</a>
                     </div>
                     <div class='all'>
-                        <a href="all">ALL</a>
+                        <a href="#all" class="nav-tabs">ALL</a>
                     </div>
                 </div>
                 <div class="bar"></div>
-                <div class="mainbody" ng-controller="MainController">
+                <div class="mainbody" id="main">
                     <div class="bar"></div>
                     <div class="block" ng-repeat="item in online">
                         <a ng-href="{{ item.stream.channel.url }}">
@@ -40,9 +40,9 @@
                         <div class="bar"></div>
                         </a>
                     </div>
+                    <div ng-view></div>
                 </div>
             </div>
-            <div ng-view></div>
         </div>  <!--END WRAP-->
         
         <!--MODULE-->
