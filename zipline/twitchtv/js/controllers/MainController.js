@@ -1,7 +1,8 @@
 app.controller('MainController', function($scope, $http) {
 
     
-    var usernames = ['arteezy', 'feardarkness', 'cerebralwallsy', 'summit1g', 'pianoimproman', 'wagamamatv', "monstercat", "blackdotatv"];
+    var usernames = ['arteezy', 'feardarkness', 'cerebralwallsy', 'summit1g', 'pianoimproman', 'wagamamatv', "monstercat", "blackdotatv", "illidanstrdoto"];
+    var offlineusers = [];
     
     $scope.online = [];
     $scope.offline = [];
@@ -17,8 +18,9 @@ app.controller('MainController', function($scope, $http) {
                 $scope.online.push(data);
             }
             else if(data.stream === undefined || data.stream === null) {
-                var test = data.self;
-                $scope.offline.push(data._links);
+                $scope.offline.push(usernames[i]);
+                console.log(usernames[i]);
+                console.log($scope.offline);
             }
             $scope.all.push(data);
         })
@@ -26,4 +28,5 @@ app.controller('MainController', function($scope, $http) {
             console.log('got nothing');
         })
     }
+    console.log($scope.offline);
 });
