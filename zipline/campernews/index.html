@@ -17,14 +17,19 @@
             </div>
             
             <div class="main">
-                    <div class="card" ng-repeat="items in news">
-                        <img ng-src="{{ items.image }}">
-                        <p>{{ items.headline }}</p>
-                        <p>{{ items.timePosted | date }}</p>
+                <div class="card" ng-repeat="items in news">
+                    <a ng-href="{{ items.link }}">
+                    <div class="image">
+                    <img ng-src="{{ items.image }}">
+                    </div>
+                    <div class="content">
+                        <p>{{ items.headline }}</p> <br/>
+                        <p>{{ items.timePosted | date }}</p> <br/>
                         <p>{{ items.author.username }}</p>
                     </div>
+                </div>
+                </a>
             </div>
-            
         </div>  <!--END WRAP-->
         
         <!--APP-->

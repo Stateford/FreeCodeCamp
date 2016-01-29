@@ -24,8 +24,8 @@ body {
 .card {
     margin-left: 20px;
     margin-bottom: 20px;
-    width: 250px;
-    min-height: 250px;
+    width: 80%;
+    min-height: 50px;
     padding-top: 10px;
     padding-bottom: 15px;
     box-shadow: 1px 1px 1px black;
@@ -37,11 +37,24 @@ body {
 .card img {
     width: 150px;
     height: 100px;
-    margin-top: 20px;
     display: inline-block;
 }
 
 .card p {
-    margin: 0;
+    display: inline;
+}
+
+.image {
+    display: inline;
+    float: left;
+    margin-left: 30px;
+}
+
+.content {
+    margin-top: 10px;
+    height: 100%;
+}
+
+.content p {
     margin-top: 10px;
 }
