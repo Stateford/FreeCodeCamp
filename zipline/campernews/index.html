@@ -17,18 +17,21 @@
             </div>
             
             <div class="main">
-                <div class="card" ng-repeat="items in news">
-                    <a ng-href="{{ items.link }}">
-                    <div class="image">
-                    <img ng-src="{{ items.image }}">
+
+                <div class="block" ng-repeat="items in news">
+                <a ng-href="{{ items.link }}">
+                    <div class="card">
+                        <div class="image">
+                            <img ng-src="{{ items.image }}">    
+                        </div>
+                        <div class="content">
+                            <h3 class="headline">{{ items.headline | uppercase }}</h3>
+                            <p class="username">{{ items.author.username }}</p>
+                            <p class="pubdate">{{ items.timePosted | date }}</p>
+                        </div>
                     </div>
-                    <div class="content">
-                        <p>{{ items.headline }}</p> <br/>
-                        <p>{{ items.timePosted | date }}</p> <br/>
-                        <p>{{ items.author.username }}</p>
-                    </div>
+                    </a>
                 </div>
-                </a>
             </div>
         </div>  <!--END WRAP-->
         

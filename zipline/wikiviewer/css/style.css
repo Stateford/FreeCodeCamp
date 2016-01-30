@@ -1,65 +1,30 @@
-/*OVERALL*/
-html {
-    height: 100%;
-    width: 100%;
-}
-
 body {
-    background-color: darkblue;
-    width: 100%;
     margin: 0;
 }
 
-/*RANDOM*/
+/*TOP BAR*/
 
-#random {
-    color: white;
-    text-decoration: none;
-    font-size: 1.6em;
-    display: inline;
-    margin-left: 80px;
+.logo {
+    display: inline-block;
+    margin-left: 10px;
 }
 
-/*SEARCH FIELD*/
-#search {
-    border-radius: 20px;
-    border: 6px solid #e29304;
-    padding: 0 10px;
-    padding-bottom: 5px;
-    font-size: 1.6em;
+.searchbox-results {
+    display: inline-block;
+    float: right;
+    margin-right: 35%;
+    margin-top: 21px;
+}
+
+.searchbox-results input {
+    margin-left: 20px;
+    border-radius: 10px;
+    height: 28px;
     width: 200px;
-    background-color: darkblue;
-    color: white;
-    margin-top: 5px;
-    margin-bottom: 5px;
+    border: 1px solid black;
 }
 
-/*CENTER*/
-.wrapper {
-    width: 100%;
-    height: 100%;
-}
-
-.container {
-    width: 250px;
-    margin: 0 auto;
-    margin-top: 200px;
-}
-
-/*BUTTONS*/
-.buttons {
-    display: inline;
-    margin-left: 100px;
-}
-
-#submitbtn {
-    border-radius: 100px;
-    background-color: white;
-    color: darkblue;
-}
-
-#resetbtn {
-    border-radius: 100px;
-    background-color: white;
-    color: darkblue;
+.searchbox-results button {
+    height: 28px;
+    border-radius: 10px;
 }

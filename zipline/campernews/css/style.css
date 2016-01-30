@@ -24,7 +24,7 @@ body {
 .card {
     margin-left: 20px;
     margin-bottom: 20px;
-    width: 80%;
+    width: 200px;
     min-height: 50px;
     padding-top: 10px;
     padding-bottom: 15px;
@@ -37,15 +37,13 @@ body {
 .card img {
     width: 150px;
     height: 100px;
-    display: inline-block;
 }
 
 .card p {
-    display: inline;
+    display: block;
 }
 
 .image {
-    display: inline;
     float: left;
     margin-left: 30px;
 }
@@ -57,4 +55,17 @@ body {
 
 .content p {
     margin-top: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:visited {
+    color: black;
+}
+
+.block {
+    display: inline;
 }

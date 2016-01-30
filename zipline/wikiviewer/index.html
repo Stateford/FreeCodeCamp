@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="WikiViewer">
     <head>
         <meta charset="utf-8">
         <title>WikiViewer</title>
@@ -9,9 +9,27 @@
         <link type="text/css" rel='stylesheet' href="css/style.css">
         <script src="js/javascript.js"></script>
     </head>
-    <body>
+    <body ng-controller="WikiCtrl">
         <div class="wrapper">
-            <div ng-view></div>
-        </div>
+            
+            <div class="default">
+                <div class="default-logo">
+                    <h1>WikiView</h1>
+                </div>
+                <div class="default-search">
+                    <form>
+                        <input type="text">
+                        <button type="submit">Search</button>
+                        <button type="button">Random</button>
+                    </form>
+                </div>
+            </div>
+            
+        </div><!--END WRAP-->
+        
+        <!--APP-->
+        <script src="js/app.js"></script>
+        <!--CONTROLLER-->
+        <script src="js/controller/WikiCtrl.js"></script>
     </body>
 </html>
