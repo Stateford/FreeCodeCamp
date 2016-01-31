@@ -26,8 +26,9 @@
                         </div>
                         <div class="content">
                             <h3 class="headline">{{ items.headline | uppercase }}</h3>
-                            <p class="username">{{ items.author.username }}</p>
-                            <p class="pubdate">{{ items.timePosted | date }}</p>
+                            <p class="username">Written by: {{ items.author.username }}</p>
+                            <p class="pubdate">Published on : {{ items.timePosted | date }}</p>
+                            <p class="upvotes">Upvotes: {{ items.rank }}</p>
                         </div>
                     </div>
                     </a>
