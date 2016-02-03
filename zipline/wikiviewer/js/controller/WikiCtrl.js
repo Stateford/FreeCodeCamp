@@ -1,6 +1,11 @@
 app.controller('WikiCtrl', function($scope, $http) {
-    $http.get('')
-    .success(function(data) {
-        $scope.results = data;
-    })
+    
+    $scope.GetQuery = function() {
+        getSearchBox = $('.searchbox').val();
+        $http.get('' + getSearchBox)
+        .success(function(data) {
+            $scope.results = data;
+        })
+        
+    }
 });
