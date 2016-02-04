@@ -28,3 +28,7 @@ body {
     height: 28px;
     border-radius: 10px;
 }
+
+.results p {
+    display: inline-block;
+}
