@@ -28,15 +28,13 @@
             <!--DEBUG-->
             <div class="debug">
 <!--                <pre>{{ results | json }}</pre>-->
+<!--
                 <pre ng-repeat="name in name">{{ name }}</pre>
                 <pre ng-repeat="n in description">{{ n }}</pre>
                 <pre ng-repeat="link in url">{{ link }}</pre>
-                <div class="results">
-<!--
-                    <p class="title" ng-repeat="items in results[1]">{{items}}</p>
-                    <p class="description" ng-repeat="items in results[2]">{{items}}</p>
-                    <p class="url" ng-repeat="items in results[3]">{{items}}</p>
 -->
+                <div class="results" ng-repeat="items in results">
+                    <p class="title">{{items[$index]}}   title</p>
                 </div>
             </div>
             
