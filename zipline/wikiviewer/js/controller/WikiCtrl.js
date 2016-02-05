@@ -7,7 +7,7 @@ app.controller('WikiCtrl', function($scope, $http) {
         $scope.description = [];
         $scope.url = [];
         
-        getSearchBox = $('#searchbox-default').val();
+        getSearchBox = $('.searchbox').val();
         $http.jsonp('https://en.wikipedia.org/w/api.php?action=opensearch&format=json&callback=JSON_CALLBACK&search=' + getSearchBox)
         .success(function(data) {
             $scope.results = data;
@@ -17,7 +17,6 @@ app.controller('WikiCtrl', function($scope, $http) {
                 $scope.description.push(data[2][i]);
                 $scope.url.push(data[3][i]);
             };
-            
             
             console.log(data);
         });

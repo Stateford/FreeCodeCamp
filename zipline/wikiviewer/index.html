@@ -12,30 +12,29 @@
     <body ng-controller="WikiCtrl">
         <div class="wrapper">
             
-            <div class="default">
-                <div class="default-logo">
+            <div class="results-nav">
+                <div class="results-logo">
                     <h1>WikiView</h1>
                 </div>
-                <div class="default-search">
+                <div class="results-search">
                     <form>
-                        <input id='searchbox-default' type="text">
-                        <button type="submit" ng-click="GetQuery()">Search</button>
-                        <button type="button">Random</button>
+                        <input class='searchbox' type="text">
+                        <button class="submit" type="submit" ng-click="GetQuery()">Search</button>
+                        <button class="random" type="button">Random</button>
                     </form>
                 </div>
             </div>
             
-            <!--DEBUG-->
-            <div class="debug">
-<!--                <pre>{{ results | json }}</pre>-->
-<!--
-                <pre ng-repeat="name in name">{{ name }}</pre>
-                <pre ng-repeat="n in description">{{ n }}</pre>
-                <pre ng-repeat="link in url">{{ link }}</pre>
--->
-                <div class="results" ng-repeat="items in results">
-                    <p class="title">{{items[$index]}}   title</p>
+            <!--RESULTS-->
+            <div class="results" ng-repeat="items in results[1]">
+                <a ng-href="{{url[$index]}}">
+                <div class="container">
+                    <div class="info">
+                        <p class="title">{{name[$index]}}</p><br/>
+                        <p class="description">{{description[$index]}}</p>
+                    </div>
                 </div>
+                </a>
             </div>
             
         </div><!--END WRAP-->
