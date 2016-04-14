@@ -30,5 +30,18 @@ class Person {
     }
 }
 
-
 var bob = new Person("Bob Ross");
+console.log(`FIRSTNAME: ${bob.firstName}`);
+console.log(`LASTNAME: ${bob.lastName}`);
+
+console.log(`GETFIRSTNAME: ${bob.getFirstName()}`);
+console.log(`GETLASTNAME: ${bob.getLastName()}`)
+console.log(`GETFULLNAME: ${bob.getFullName()}`);
+
+bob.setFirstName("Haskell");
+console.log(`NEWNAME: ${bob.getFullName()}`);
+bob.setLastName("Curry");
+console.log(`NEWNAME: ${bob.getFullName()}`);
+
+bob.setFullName("Idiet Moran");
+console.log(`SETFULLNAME: ${bob.getFullName()}`);
