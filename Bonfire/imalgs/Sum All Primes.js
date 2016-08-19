@@ -1,16 +1,28 @@
 function sumPrimes(num) {
-    var prime = [];
-    var total = 0;
-    
-    for(var i = 0; i < num; i++) {
-        for(var l = 2; l < (i - 1); l++) {
-            if() {
-                prime.push(i);
-            }
+    let numbers = [];
+    let prime = [];
+    let total = 0;
+    for(let i = 0; i <= num; i++) {
+        if(i >= 2) {
+            numbers.push(i);
         }
     }
-    console.log(prime);
-};
 
-console.log(sumPrimes(10));
-console.log(sumPrimes(19));
+    for(let i of numbers) {
+        let notPrime = false;
+        for(let l = 2; l < i; l++) {
+            if(i % l === 0 && l !== i) {
+                notPrime = true;
+            }
+        }
+        if(!notPrime) {
+            prime.push(i);
+        }
+    }
+
+    for(let i of prime) {
+        total += i;
+    }
+    console.log(total);
+    return total;
+}
